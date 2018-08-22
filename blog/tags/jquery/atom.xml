@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: jQuery | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/jquery/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2018-08-22T18:01:44+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Comparison of window.onload and jQuery's $(document).ready]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/14/computer-javascript-jquery/"/>
+    <updated>2016-05-14T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/14/computer-javascript-jquery</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://www.amazon.co.jp/gp/product/B00HZ96DBE?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00HZ96DBE&amp;linkCode=shr&amp;tag=rcmdnk0c-22" rel="nofollow" target="_blank"><img width="200" height="200" src="https://images-na.ssl-images-amazon.com/images/I/51wXuc8T0-L._SS280.jpghttps://images-na.ssl-images-amazon.com/images/I/51wXuc8T0-L._SS280.jpg._SS200_.jpg" alt="Amazon.co.jp： Alligator: OnLoad: デジタルミュージック" /></a></div>
+
+<p>JavaScript has a function of <code>window.onload = function()</code>,
+which is executed after the page is loaded.</p>
+
+<p>jQuery also has similar function of <code>$(document).ready(runction())</code>,
+but they are a little different.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#windowonload" id="markdown-toc-windowonload">window.onload</a></li>
+  <li><a href="#documentready" id="markdown-toc-documentready">$(document).ready</a></li>
+  <li><a href="#implement-documentready-like-behavior-wo-jquery" id="markdown-toc-implement-documentready-like-behavior-wo-jquery">Implement $(document).ready like behavior w/o jQuery</a></li>
+  <li><a href="#multiple-registration-at-onload" id="markdown-toc-multiple-registration-at-onload">Multiple registration at onload</a></li>
+  <li><a href="#execution-order" id="markdown-toc-execution-order">Execution order</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="windowonload">window.onload</h1>
+
+<p><code>window.onload</code> method is executed when <code>onload</code> even occurs.
+This means when not only DOM tree is built, but also
+all data, such images, are loaded.</p>
+
+<p>To give assign a function, it is like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;onload 1&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Therefore, if you have another liens like below,
+it will overwrite the previous one.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;onload 2&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In this case, only <code>onload 2</code> is shown.</p>
+
+<p>There are another method of <code>document.body.onload</code>,
+which in principle works in the same way as <code>window.onload</code>,
+but it behaves a little different in different browser,
+so that <code>window.onload</code> is recommended rather than <code>document.body.onload</code>.</p>
+
+<h1 id="documentready">$(document).ready</h1>
+
+<p>This is usually used when jQuery is used.</p>
+
+<p>This is executed when DOM tree is built.
+It doesn’t wait loading such images.</p>
+
+<p>Therefore, it is executed earlier than <code>window.onload</code>.</p>
+
+<p>The code is like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 1&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>This works to put a function,
+so multiple inputs can be accepted.</p>
+
+<p>You can omit some parts and can write like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 2&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>If you have above both, a console shows <code>ready 1</code> and <code>ready 2</code>.</p>
+
+<p>If <code>$</code> has a name collision problem, it should be like</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 3&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>And following style with <code>on</code> works similar,
+but a little different (see below).</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 4&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h1 id="implement-documentready-like-behavior-wo-jquery">Implement $(document).ready like behavior w/o jQuery</h1>
+
+<p>Main differences between <code>window.onload</code> and <code>$(document).ready</code> are
+the timing when it is executed,
+whether it can have multiple components or not.</p>
+
+<p>For the timing, you can do most of the things when DOM tree is built,
+and might want to start w/o waiting images.</p>
+
+<p>In addition, it is much easier just to add,
+not overwrite the method,
+so <code>$(document).ready</code> is very useful
+and it is great if it can be implemented w/o jQuery.</p>
+
+<p>To do this, you should add an event listener to <code>DOMContentLoaded</code><sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup>.</p>
+
+<p>Here is an example:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><code>DomContentloaded</code> means as in the literature,
+when DOM is built.
+As a matter of fact, <code>$(document).ready</code> uses this internally
+<sup id="fninref:2"><a href="#fnin:2" rel="footnote">2</a></sup>.</p>
+
+<p>Of course, <code>addEventListener</code> can accept multiple methods<sup id="fninref:3"><a href="#fnin:3" rel="footnote">3</a></sup>.</p>
+
+<p>In these days, <code>DOMContentLoaded</code> can be used in most of the browsers<sup id="fninref:4"><a href="#fnin:4" rel="footnote">4</a></sup>,
+so that <code>$(document).ready</code> can be replaced by <code>DOMContentLoaded</code>.</p>
+
+<h1 id="multiple-registration-at-onload">Multiple registration at onload</h1>
+
+<p>On the other hand, you may need to execute methods
+after loading all images.</p>
+
+<p>It can be done by <code>window.onload</code>, but only one method can be registered.</p>
+
+<p>If you can use jQuery,
+it is easy that you can write like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;onload jquery 0&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>or</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;event add load 0&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;on load 0&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>If you can’t use jQuery,
+you need to write like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="kd">function</span> <span class="nx">ready_func</span> <span class="p">(){</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready_func&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">if</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span> <span class="p">){</span>
+</span><span class="line">  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">ready_func</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="p">){</span>
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s1">&#39;onload&#39;</span><span class="p">,</span> <span class="nx">ready_func</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="c1">//else{</span>
+</span><span class="line"><span class="c1">//  window.onload = ready_func;</span>
+</span><span class="line"><span class="c1">//}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><code>attacEvent</code> method is for IE.</p>
+
+<p>Be careful that argument is a little different between <code>addEventListener</code>
+and <code>attachEvent</code> (<code>load</code> and <code>onload</code>, respectively)
+<sup id="fninref:5"><a href="#fnin:5" rel="footnote">5</a></sup>.</p>
+
+<p>Most of browser can be covered by these two methods,
+but if necessary, <code>window.onload</code> can be placed here (though only one method can be registered).</p>
+
+<h1 id="execution-order">Execution order</h1>
+
+<p>As written above, <code>ready</code> is executed earlier than <code>load</code>.
+To check more details, let’s try following code:</p>
+
+<figure class="code"><figcaption><span>test.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="err">/head&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;IIFE 0&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="p">}());</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 0 window.onload = function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 0 window.addEventListener(&quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 0 $(window).load(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 0 $(window).on(&quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 0 $.event.add(window, &quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 0 $(document).ready(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 0 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 0 $(document).on(&quot;ready&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 0 $(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;IIFE 1&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="p">}());</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 1 window.onload = function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 1 window.addEventListener(&quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 1 $(window).load(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 1 $(window).on(&quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;load 1 $.event.add(window, &quot;load&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 1 $(document).ready(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 1 document.addEventListener(&quot;DOMContentLoaded&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 1 $(document).on(&quot;ready&quot;, function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ready 1 $(function() {...&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;IIFE 2&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="p">}());</span>
+</span><span class="line"><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="err">/body&gt;</span>
+</span><span class="line"><span class="o">&lt;</span><span class="err">/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>This code uses:</p>
+
+<ul>
+  <li>load:
+    <ul>
+      <li><code>window.onload = function() {...</code></li>
+      <li><code>window.addEventListener("load", function() {...</code></li>
+      <li><code>$(window).load(function() {...</code> (jQuery)</li>
+      <li><code>$(window).on("load", function() {...</code> (jQuery)</li>
+      <li><code>$.event.add(window, "load", function() {...</code> (jQuery)</li>
+    </ul>
+  </li>
+  <li>ready:
+    <ul>
+      <li><code>document.addEventListener("DOMContentLoaded", function() {...</code></li>
+      <li><code>$(document).ready(function() {...</code> (jQuery)</li>
+      <li><code>$(function() {...</code> (jQuery)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>In addition, there are some immediately-invoked function expressions (IIFE).</p>
+
+<p>The result with Google Chrome(43.0.2357.130, Mac) is:</p>
+
+<pre><code>IIFE 0
+IIFE 1
+IIFE 2
+ready 0 $(document).ready(function() {...
+ready 0 $(function() {...
+ready 1 $(document).ready(function() {...
+ready 1 $(function() {...
+ready 0 $(document).on("ready", function() {...
+ready 1 $(document).on("ready", function() {...
+ready 0 document.addEventListener("DOMContentLoaded", function() {...
+ready 1 document.addEventListener("DOMContentLoaded", function() {...
+load 0 window.addEventListener("load", function() {...
+load 0 $(window).load(function() {...
+load 0 $(window).on("load", function() {...
+load 0 $.event.add(window, "load", function() {...
+load 1 $(window).load(function() {...
+load 1 $(window).on("load", function() {...
+load 1 $.event.add(window, "load", function() {...
+load 1 window.onload = function() {...
+load 1 window.addEventListener("load", function() {...
+</code></pre>
+
+<p>On the other hand, the result with Firefox(39.0, Mac) shows
+almost same, but <code>load 1 window.onload = function() {...</code>
+is shown before <code>load 0 window.addEventListener("load", function() {...</code>.</p>
+
+<p>After some tests, followings can be seen:</p>
+
+<ul>
+  <li>About <code>ready</code>:
+    <ul>
+      <li>Frist, jQuery’s document ready related things, such <code>$(document).ready</code>, or <code>$(function()</code>, are executed in the written order.</li>
+      <li>Second, <code>$(document).on("ready"</code> is executed.</li>
+      <li>Then, <code>"DOMContentLoaded"</code> is executed.</li>
+    </ul>
+  </li>
+  <li>About <code>load</code>:
+    <ul>
+      <li>Only the last one of <code>window.onload</code> is executed.</li>
+      <li><code>window.onload</code> and <code>addEventListener("load"</code> are executed in the written order. But if there are more than one <code>window.onload</code>, the first one is used as an order point.
+        <ul>
+          <li>In above example, <code>load 1 window.onload</code> is written in the last,
+but <code>load 0 window.onload</code> is used as an order point,
+therefore it is executed before <code>load 1 window.addEventListener("load"</code>.</li>
+        </ul>
+      </li>
+      <li>Methods are executed in written order in jQuery’s methods, <code>$(window).load</code>, <code>$(window).on("load"</code> and <code>$event.add(window, "load"</code>.</li>
+      <li>On Firefox, <code>window.onload</code> and <code>addEventListener("load"</code> are executed
+before jQuery’s <code>load</code>, if it is written before all of jQuery’s <code>load</code> methods.
+        <ul>
+          <li>jQuery’s <code>load</code> is executed first if any of jQuery’s <code>load</code> is written before <code>window.onload</code>.</li>
+          <li>Here, the order point of <code>window.onload</code> is the first written one as written above.</li>
+        </ul>
+      </li>
+      <li>On Google Chrome, <code>addEventListener("load"</code> is executed
+beore jQuerey’s <code>load</code>, if it is written before all of jQuery’s <code>load</code> method.
+        <ul>
+          <li>jQuery’s <code>load</code> is executed first if any of jQuery’s <code>load</code> is written before <code>addEventListener("load"</code>.</li>
+        </ul>
+      </li>
+      <li>On Google Chrome, <code>window.onload</code> is executed before jQuery’s <code>load</code> in any case.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>It is a bit complex,
+but one could argue that
+it is unstable if these different methods are used all together,
+so that it should be written in the same way in each <code>load</code> or <code>ready</code>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

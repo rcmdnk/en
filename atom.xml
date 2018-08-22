@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <link href="https://rcmdnk.superfeedr.com/" rel="hub"/>
+  <updated>2018-08-22T18:01:44+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Vimperator @ Firefox 47]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/06/08/computer-firefox-vimperator/"/>
+    <updated>2016-06-08T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/06/08/computer-firefox-vimperator</id>
+    <content type="html"><![CDATA[<p>Yesterday, Mozilla released Firefox 47.</p>
+
+<p>Unfortunately, current version of <a href="https://rcmdnk.com/en/blog/tags/vimperator/">Vimperator</a>
+doesn’t work with Firefox 47.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/06/08/computer-firefox-vimperator/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to change an account name in Mac OS X]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/19/computer-mac/"/>
+    <updated>2016-05-19T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/19/computer-mac</id>
+    <content type="html"><![CDATA[<p>If you set a user account of OS X w/o thought
+and become to eager to change the account name,
+there are actually some problems.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/05/19/computer-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to disable Mac's startup chime]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/18/computer-mac/"/>
+    <updated>2016-05-18T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/18/computer-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://itunes.apple.com/app/volume-reset/id495705418?mt=12&amp;at=10lc94" target="_blank" rel="nofollow"><img  width="100" class="alignleft" align="left" src="http://is3.mzstatic.com/image/pf/us/r30/Purple6/v4/fb/6c/dc/fb6cdcb8-da7e-2487-5045-e282503c551d/AppIcon.100x100-75.png" style="border-radius: 20px 20px 20px 20px;-moz-border-radius: 20px 20px 20px 20px;-webkit-border-radius: 20px 20px 20px 20px;box-shadow: 1px 4px 6px 1px #999999;-moz-box-shadow: 1px 4px 6px 1px #999999;-webkit-box-shadow: 1px 4px 6px 1px #999999;margin: -5px 15px 1px 5px;" /></a></div>
+
+<p>It may sometime happen that
+you forget to disable sound of a laptop
+and bring it out then the laptop suddenly sounds unexpectedly.</p>
+
+<p>Especially about Mac, it always sounds at starting OS X.
+It is very annoying so that you may want to disable it.</p>
+
+<p>Here, I corrected some methods to disable such a start up chime.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/05/18/computer-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A bit more detail about SIP (System Integrity Protection) of OS X 10.11 El Capitan]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/17/computer-mac/"/>
+    <updated>2016-05-17T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/17/computer-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://www.amazon.co.jp/gp/product/B016AZMAIS?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B016AZMAIS&amp;linkCode=shr&amp;tag=rcmdnk0c-22" rel="nofollow" target="_blank"><img  width="200" height="200" src="https://images-fe.ssl-images-amazon.com/images/I/510n9cnBIrL._SS200_.jpg" alt="The Complete Beginners Guide to Mac OS X El Capitan: (For MacBook, MacBook Air, MacBook Pro, iMac, Mac Pro, and Mac Mini) (English Edition) " /></a></div>
+
+<p>OS X 10.11 El Capitan adopts new security system called
+SIP (System Integrity Protection).</p>
+
+<p>This new system affects some applications and
+some of them can not be used under it.
+It also affects on <a href="https://rcmdnk.com/en/blog/tags/homebrew/">Homebrew</a>.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/05/17/computer-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to add non-Gmail address to Gmail with Gmail's SMTP server]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/15/computer-gmail/"/>
+    <updated>2016-05-15T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/15/computer-gmail</id>
+    <content type="html"><![CDATA[<p>I’m managing all e-mail addresses in Gmail.</p>
+
+<p>All emails are forwarded to my Gmail account
+and I send mails by Gmail for these addresses.</p>
+
+<p>Previously, I used Thunderbird and no forwarding was used.
+But Gmail’s web interface has become so useful,
+and it is much easier to use it as I can use it with full my settings (especially filters)
+if only I have a browser.</p>
+
+<p>To add addresses, previously, SMTP server setting was easily by using Gmail’s SMTP server,
+but recently it was changed a bit.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/05/15/computer-gmail/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Comparison of window.onload and jQuery's $(document).ready]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/14/computer-javascript-jquery/"/>
+    <updated>2016-05-14T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/14/computer-javascript-jquery</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://www.amazon.co.jp/gp/product/B00HZ96DBE?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B00HZ96DBE&amp;linkCode=shr&amp;tag=rcmdnk0c-22" rel="nofollow" target="_blank"><img  width="200" height="200" src="https://images-na.ssl-images-amazon.com/images/I/51wXuc8T0-L._SS280.jpghttps://images-na.ssl-images-amazon.com/images/I/51wXuc8T0-L._SS280.jpg._SS200_.jpg" alt="Amazon.co.jp： Alligator: OnLoad: デジタルミュージック" /></a></div>
+
+<p>JavaScript has a function of <code>window.onload = function()</code>,
+which is executed after the page is loaded.</p>
+
+<p>jQuery also has similar function of <code>$(document).ready(runction())</code>,
+but they are a little different.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2016/05/14/computer-javascript-jquery/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adding additional file usage to Brew-file]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/06/03/computer-brew-file-homebrew-mac/"/>
+    <updated>2015-06-03T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/06/03/computer-brew-file-homebrew-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00PUGKX2Y/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/81R5LNqLdVL._SS200_.png" alt="File Manager" /></a></div>
+
+<p>New Brewfile’s command <code>file</code> has been added
+to <a href="https://rcmdnk.com/en/blog/tags/brew-file/">Brew-file</a>.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/06/03/computer-brew-file-homebrew-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Brew-file update: completion, wrapper commands]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac/"/>
+    <updated>2015-05-15T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00VU5HR1Y/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/51eQpBDjdRL._SS200_.jpg" alt="The Completion " /></a></div>
+
+<p><a href="https://github.com/rcmdnk/homebrew-file">Brew-file</a>
+has been updated.</p>
+
+<p>The new wrapper function allows you to use some subcommands of <code>brew-file</code>
+directly as a <code>brew</code>’s subcommand.</p>
+
+<p>Completion functions are also implemented for both Bash and Zsh.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Can't ignore unknown argument in subparser of ArgumentParser of Python even if parse_known_args is given]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/03/08/computer-python/"/>
+    <updated>2015-03-08T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/03/08/computer-python</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00M9P7JKI/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/61-3bJwurUL._SS200_.jpg" alt="An Illustrated Book of Bad Arguments " /></a></div>
+
+<p>There was a messy point in my Python script: <a href="https://github.com/rcmdnk/homebrew-file">Brew-file</a>,
+related with ArgumentParser.</p>
+
+<p>In this post, the problem and how I addressed are written.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/03/08/computer-python/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Many duplicated directories appear in Dock's Home pop-up]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/03/06/computer-mac/"/>
+    <updated>2015-03-06T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/03/06/computer-mac</id>
+    <content type="html"><![CDATA[<p>Recent, I realized that there are many duplicated directories
+in a pop-up of Home directory in Dock.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/03/06/computer-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable an event tracking of Google Website Translator with Universal Analytics]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/28/blog-javascript/"/>
+    <updated>2015-01-28T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/28/blog-javascript</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0596158009/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/51j60chkWrL._SS200_.jpg" alt="Google Analytics" /></a></div>
+
+<p>I recently noticed that an event tracking of Google Website Translator is no longer available.</p>
+
+<p>What I was changed is the code of Google Analytics: old <strong>ga.js</strong> code to
+new Universal Analytics code, <strong>analytics.js</strong>.</p>
+
+<p>It seems Google Translate code is not updated for Universal Analytics.
+Here is my attempt to fix it by modifying core codes of Google Translate.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/01/28/blog-javascript/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notice a copy event on your blog in Google Analytics]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript/"/>
+    <updated>2015-01-27T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0672333201/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/41q08y3QGAL._SS200_.jpg" alt="Sams Teach Yourself Google Analytics in 10 Minutes" /></a></div>
+
+<p>In the post <a href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript/">Notice a copy event on your blog by email only by JavaScript</a>,
+the copy events are sent to Mandrill to make an email notice.</p>
+
+<p>In this post, I would introduce how to analyze such events
+in Google Analytics.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Access to Mac from other machines]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/18/computer-mac/"/>
+    <updated>2015-01-18T13:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/18/computer-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B0074703CM/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/518tQZTWd6L._SS200_.jpg" alt="Apple MacBook Pro MD101LL/A 13.3-Inch Laptop" /></a></div>
+
+<p>It is useful if you have a way to access to your Mac
+from other machines.</p>
+
+<p>Here is my summary of how to access to Mac.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/01/18/computer-mac/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prevent to disconnect a ssh connection by 'Connection reset by peer']]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/18/computer-linux-putty/"/>
+    <updated>2015-01-18T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/18/computer-linux-putty</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0596008953/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/51k8tk6WpfL._SS200_.jpg" alt="SSH, The Secure Shell: The Definitive Guide" /></a></div>
+
+<p>When I was working with ssh,
+sometime a ssh connection was broken with a message:</p>
+
+<pre><code>Read from remote host example.com: Connection reset by peer
+Connection to example.com closed.
+</code></pre>
+
+<p>This is because that a connection is cut by a router
+if there is no action for a while.</p>
+
+<p>To prevent such a situation,
+there are several ways like below.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2015/01/18/computer-linux-putty/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notice a copy event on your blog by email only by JavaScript]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript/"/>
+    <updated>2014-12-11T14:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00GVT5J9Q/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/91-q5fNQzUL._SS200_.jpg" alt="Schleich Male Mandrill Toy Figure" /></a></div>
+
+<p>It is interesting to know what parts are copied by readers.</p>
+
+<p>Though GitHub Pages cannot use such PHP,
+I found a way to send email by JavaScript as written in
+<a href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/">Send a mail by JavaScript with Mandrill</a>.</p>
+
+<p>Using this function, copy notice function was implemented in this blog.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Send a mail by JavaScript with Mandrill]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/"/>
+    <updated>2014-12-11T13:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-javascript</id>
+    <content type="html"><![CDATA[<p>This blog is hosted on GitHub pages, in which we cannot use such PHP.
+Even in such a situation, I found the way to send email only by JavaScript.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Speed up Octopress generate for a check build]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress/"/>
+    <updated>2014-12-11T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-octopress</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00QQU8VF4/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/619LXrPoCFL._SS200_.png" alt="SpeedUp RAM Booster" /></a></div>
+
+<p>Once you became to have a lot of posts, Octopress’ <code>rake generate</code>
+command could take a long time.</p>
+
+<p>When you want to check your site, normally it is needed to build only your new post.
+While Octopress has tasks of <code>isolate</code>/<code>integrate</code> to achieve such usage,
+it needs some manual commands, and there is a risk to push your site with only a new post.</p>
+
+<p>In this post, I will introduce how to speed up <code>rake generate</code>
+with an easy command, and in safety.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Brew-file: Manager for packages of Homebrew]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/11/15/computer-mac-homebrew/"/>
+    <updated>2014-11-15T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/11/15/computer-mac-homebrew</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00746Z6RK/rcmdnksblog-20/" rel="nofollow" target="_blank"><img  src="https://images-fe.ssl-images-amazon.com/images/I/51gy9VdYCeL._SS200_.jpg" alt="Apple MacBook Air MD760LL/B 13.3-Inch Laptop (NEWEST VERSION)" /></a></div>
+
+<p>I’m managing Mac’s packages with
+<a href="https://github.com/Homebrew/homebrew">Homebrew</a>.</p>
+
+<p>To keep own update history or share the settings to other Mac,
+it is very useful to make a list of packages.</p>
+
+<p>For this purpose,
+I have developed <a href="https://github.com/rcmdnk/homebrew-file">Bew-file</a>,
+which is an extension of Homebrew.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2014/11/15/computer-mac-homebrew/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[New blog with Octopress + Octogray, in GitHub Pages]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/11/12/blog-octopress/"/>
+    <updated>2014-11-12T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/11/12/blog-octopress</id>
+    <content type="html"><![CDATA[<p>This is my new blog with
+<a href="https://github.com/imathis/octopress">Octopress</a>
+and
+a theme of
+<a href="https://github.com/rcmdnk/octogray">Octogray</a>.</p>
+
+<p>The site is published in <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+
+<p>In this first post, I would introduce how to make the site
+with Octopress + Octogray + GitHub Pages.</p>
+
+ <a href="https://rcmdnk.com/en/blog/2014/11/12/blog-octopress/">Read on <i class="fa fa-hand-o-right"></i></a>]]></content>
+  </entry>
+  
+</feed>

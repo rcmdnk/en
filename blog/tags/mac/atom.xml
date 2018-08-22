@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Mac | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/mac/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2018-08-22T18:01:44+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to change an account name in Mac OS X]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/19/computer-mac/"/>
+    <updated>2016-05-19T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/19/computer-mac</id>
+    <content type="html"><![CDATA[<p>If you set a user account of OS X w/o thought
+and become to eager to change the account name,
+there are actually some problems.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#account-in-mac-os-x" id="markdown-toc-account-in-mac-os-x">Account in Mac OS X</a></li>
+  <li><a href="#how-to-change-an-account-name" id="markdown-toc-how-to-change-an-account-name">how to change an account name</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="account-in-mac-os-x">Account in Mac OS X</h1>
+
+<p><strong>Account name</strong> and registered <strong>Full name</strong> are different.</p>
+
+<p><strong>Account name</strong> is used for such home directory.</p>
+
+<p>When you set up OS X, if you set only <strong>Full name</strong>,
+then <strong>Account name</strong> is automatically set.
+It is like a combination of <strong>Full name</strong>.</p>
+
+<p>If you use non-alphabet characters,
+it may be alphabets with wrong sound.</p>
+
+<p>Therefore, it is much better to decide <em>*Account name</em> by yourself.</p>
+
+<h1 id="how-to-change-an-account-name">how to change an account name</h1>
+
+<p>Of course, you can change <strong>Account name</strong> later.</p>
+
+<p>But it is not straightforward.</p>
+
+<p>If you go <strong>Users &amp; Groups</strong> in System Preferences,
+there seems only a setting of <strong>Change Password</strong>,
+but no menu to change <strong>Account name</strong>.</p>
+
+<p>To find such a menu, first unlock further changes
+by clicking the left lower key
+and put administrator password.</p>
+
+<p>Then, right click (or <i class="key">⌃</i> + click) a user, which you want to change,
+in the left side bar.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160519_user.jpg" alt="20160519_user.jpg" class="pic" /></p>
+
+<p>It will show <strong>Advanced Options</strong>, so click it.
+It will launch advanced options page and there you can change <strong>Account name</strong>.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160519_userdetails.jpg" alt="20160519_userdetails.jpg" class="pic" /></p>
+
+<p>New account name should be different from any of existing accounts.</p>
+
+<p>Usually you have only one account with administrator right,
+but if you don’t have any account of administrator,
+you need to create one administrator account and work with it.
+(Need to logout and login as the administrator account.)</p>
+
+<p>You can change only <strong>Account name</strong>, but normally <strong>Home directory</strong> also should be changed
+to have same name with <strong>Account name</strong>.</p>
+
+<p><strong>To change Home directory, you need to move the directory
+before changing these settings in Advanced Options.</strong></p>
+
+<p>In summary, to change an account name:</p>
+
+<ol>
+  <li>Make administrator’s account if it doesn’t exist.</li>
+  <li>Login as administrator’s account.</li>
+  <li>
+    <p>Move home directory to new account name.
+From Terminal.app, you can do:</p>
+
+    <pre><code> $ sudo mv /Users/&lt;old account&gt; /Users/&lt;/new account&gt;
+</code></pre>
+
+    <p>Or open <strong>/Users</strong> directory by Finder and change <strong>&lt;old account&gt;</strong> directory’s name.</p>
+  </li>
+  <li>Open <strong>Users &amp; Groups</strong> in System Preferences.</li>
+  <li>Unlock further changes by clicking the left lower key.</li>
+  <li>Right click (or <i class="key">⌃</i>+click) account name which you want to change,
+and open <strong>Advanced Options</strong>.</li>
+  <li>Change <strong>Account name</strong> and <strong>Home directory</strong> to what you want.
+(Normally <strong>Home directory</strong> should be like <strong>/Users/&lt;new account&gt;</strong>).</li>
+  <li>Logout.</li>
+  <li>Login as <strong>&lt;new account&gt;</strong> and check it.</li>
+  <li>If it is fine, delete administrator’s account if you created it for this.</li>
+</ol>
+
+<blockquote>
+  <p><a href="https://support.apple.com/en-us/HT201548">Change the OS X user account name and home folder name on your Mac - Apple Support</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to disable Mac's startup chime]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/18/computer-mac/"/>
+    <updated>2016-05-18T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/18/computer-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://itunes.apple.com/app/volume-reset/id495705418?mt=12&amp;at=10lc94" target="_blank" rel="nofollow"><img width="100" class="alignleft" align="left" src="http://is3.mzstatic.com/image/pf/us/r30/Purple6/v4/fb/6c/dc/fb6cdcb8-da7e-2487-5045-e282503c551d/AppIcon.100x100-75.png" style="border-radius: 20px 20px 20px 20px;-moz-border-radius: 20px 20px 20px 20px;-webkit-border-radius: 20px 20px 20px 20px;box-shadow: 1px 4px 6px 1px #999999;-moz-box-shadow: 1px 4px 6px 1px #999999;-webkit-box-shadow: 1px 4px 6px 1px #999999;margin: -5px 15px 1px 5px;" /></a></div>
+
+<p>It may sometime happen that
+you forget to disable sound of a laptop
+and bring it out then the laptop suddenly sounds unexpectedly.</p>
+
+<p>Especially about Mac, it always sounds at starting OS X.
+It is very annoying so that you may want to disable it.</p>
+
+<p>Here, I corrected some methods to disable such a start up chime.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#simple-method" id="markdown-toc-simple-method">Simple method</a></li>
+  <li><a href="#volume-reset" id="markdown-toc-volume-reset">Volume Reset</a></li>
+  <li><a href="#other-applicationssettings" id="markdown-toc-other-applicationssettings">Other applications/settings</a>    <ul>
+      <li><a href="#systemaudiovolume-of-vnram" id="markdown-toc-systemaudiovolume-of-vnram">SystemAudioVolume of VNRAM</a></li>
+      <li><a href="#startninja" id="markdown-toc-startninja">StartNinja</a></li>
+      <li><a href="#mutecon" id="markdown-toc-mutecon">MuteCon</a></li>
+      <li><a href="#psst" id="markdown-toc-psst">Psst</a></li>
+      <li><a href="#startupsoundprefpane" id="markdown-toc-startupsoundprefpane">StartupSound.prefPane</a></li>
+      <li><a href="#bequiet" id="markdown-toc-bequiet">beQUIET</a></li>
+    </ul>
+  </li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="simple-method">Simple method</h1>
+
+<p>The problem of the sound in the outside is making sounds from an internal speaker.</p>
+
+<p>Therefore, if you are using an external speaker or a headphone,
+you should keep the internal speaker in mute.</p>
+
+<p>Here, you need to be careful that when you connect such an external speaker to Mac,
+The menu in <strong>Sound</strong> of <strong>System Preferences</strong> (or the menu appearing when
+the speaker icon in the menu bar is clicked with <i class="key">⌥</i>),
+the external speaker overrides the internal speaker and it disappears,
+while speakers/headphones which are connected with Bluetooth are
+listed from them.</p>
+
+<p>Therefore, it can easily happen that even you thought you muted it,
+but it is just an external one and
+it sounds at the next start up from the internal speaker.
+The start up chime sounds from the internal speaker
+even if you connect speaker with a code.</p>
+
+<p>So, you need to change the internal speaker
+after disconnecting all other sounds related thins.</p>
+
+<h1 id="volume-reset">Volume Reset</h1>
+
+<p><a href="https://itunes.apple.com/app/volume-reset/id495705418?mt=12&amp;at=10lc94" target="_blank" rel="nofollow"><img width="100" class="alignleft" align="left" src="http://is3.mzstatic.com/image/pf/us/r30/Purple6/v4/fb/6c/dc/fb6cdcb8-da7e-2487-5045-e282503c551d/AppIcon.100x100-75.png" style="border-radius: 20px 20px 20px 20px;-moz-border-radius: 20px 20px 20px 20px;-webkit-border-radius: 20px 20px 20px 20px;box-shadow: 1px 4px 6px 1px #999999;-moz-box-shadow: 1px 4px 6px 1px #999999;-webkit-box-shadow: 1px 4px 6px 1px #999999;margin: -5px 15px 1px 5px;" /></a><strong> <a href="https://itunes.apple.com/app/volume-reset/id495705418?mt=12&amp;at=10lc94" target="_blank" rel="nofollow">Volume Reset 1.3(Free)</a></strong></p>
+
+<p>Volume Rest is a menu bar application
+which can change a volume at such <strong>Shutting down</strong> or <strong>Sleeping</strong>.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160518_volumereset.jpg" alt="volumereset" class="pic" /></p>
+
+<p>Here, if you set <strong>Mute</strong> when <strong>Shutting down</strong>,
+then a start up chime is not sounded.</p>
+
+<p>If you want to just stop a start up chime
+but want to keep a sound level after booting,
+you can use <strong>Restore Volume</strong> option.</p>
+
+<p>I like this application because it can also change a sound level
+at <strong>Sleeping</strong>.
+In these days, normally I don’t make a laptop shut down but make in a sleep
+when I bring it out,
+so I need to change a sound level especially at the sleeping.</p>
+
+<p>So that I set like above picture: the level is <strong>Mute</strong>, Reset volume when both <strong>Shutting down</strong> and <strong>Sleeping</strong>,
+not <strong>Restore volume</strong>, and <strong>Open at login</strong>.</p>
+
+<p>It should be noted that
+this application changes a sound level of what is currently used.</p>
+
+<p>So if you connect a headphone, and make Mac sleep,
+then a sound level of the headphone is changed,
+an internal speaker’s level is not changed.</p>
+
+<h1 id="other-applicationssettings">Other applications/settings</h1>
+
+<h2 id="systemaudiovolume-of-vnram">SystemAudioVolume of VNRAM</h2>
+
+<p>NVRAM(Non-Volatile RAM) is a small memory
+which has information of such speaker’s volume or display’s resolution<sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup>.</p>
+
+<p>In it, there is <strong>SystemAudioVolume</strong>
+and some articles say that a start up chime’s sound level can be changed by this parameter.</p>
+
+<p>You can check the parameter by <code>nvram -p</code>:</p>
+
+<pre><code>$ nvram -p | grep SystemAudioVolume
+SystemAudioVolumeDB     %ee
+SystemAudioVolume       [
+</code></pre>
+
+<p>Here, <strong>SystemAudioVolume</strong> is <code>[</code> (=0x5B).</p>
+
+<p><strong>SystemAudioVolume</strong> can have value within 0x0 to 0x7f,
+so 0x5B is ~70%.</p>
+
+<p>To set new value, put value starting with <code>%</code>, like</p>
+
+<pre><code>$ sudo nvram SystemAudioVolume=%00
+</code></pre>
+
+<p>But when I tried it, sometime it worked,
+but sometime not and the value of <strong>SystemAudioVolume</strong> was restored to <code>[</code>.</p>
+
+<p>It seems other people also meet similar situation
+<sup id="fninref:2"><a href="#fnin:2" rel="footnote">2</a></sup>.</p>
+
+<p>This method seems unstable and can not be used for now.</p>
+
+<p>I found some articles argue about <strong>SystemSoundVolume</strong>,
+but I think it is just a typo (or <strong>SystemAudioVolume</strong> was such a name before…?).</p>
+
+<h2 id="startninja">StartNinja</h2>
+
+<blockquote>
+  <p><a href="http://www.allvu.com/index.php/products/startninja.html">StartNinja</a></p>
+</blockquote>
+
+<p>StartNinja is an application to suppress a start up chime
+with a cute icon.</p>
+
+<p>It can be used in Yosemite, too.</p>
+
+<p>If you are using Homebrew, you can install it by Homebrew Cask:</p>
+
+<pre><code>$ brew cask install startninja
+</code></pre>
+
+<p>When you launch the application, you will see following window:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160518_ninjaon.jpg" alt="ninjaon" class="pic" /></p>
+
+<p>First, push <strong>Get Current Setting</strong>, then you can change <strong>ON</strong> or <strong>OFF</strong>.
+Above status means <strong>ON</strong>, i.e. a start up chime is sounded.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160518_ninjaoff.jpg" alt="ninjaoff" class="pic" /></p>
+
+<p>If you set <strong>OFF</strong>, it is disabled.</p>
+
+<p>Once it is set, the application is not needed to be run.</p>
+
+<p>It affects only on the start up chime,
+so a sound level after booting is not changed.</p>
+
+<p>I checked above <strong>SystemAudioVolume</strong>, but it seems it doesn’t change it,
+so it changes something different.</p>
+
+<p>As written in the window,
+the setting is removed if StartNinja application is removed.
+It means the application implements some tasks at a shutting down and booting,
+so maybe it just changes a sound level and restores.</p>
+
+<p>This application also changes what is currently used.
+Therefore, if an external speaker/headphone is connected
+and an internal speaker’s sound level is not zero,
+a start up chime is sounded at booting even if you set <strong>OFF</strong> at StartNinja.</p>
+
+<h2 id="mutecon">MuteCon</h2>
+
+<blockquote>
+  <p><a href="http://homepage1.nifty.com/macbs/download.htm#MuteCon">MuteCon</a>t</p>
+</blockquote>
+
+<p>This is also an application which changes a sound level and restore at shutting down/booting.</p>
+
+<p>It needs to be run, so you need to launch it at login.</p>
+
+<p>But it doesn’t have a function to set to load at login,
+therefore you need to put it in the start up items by yourself.</p>
+
+<p>It doesn’t have a function to change at sleeping,
+so I think Volume Reset is better to be used.</p>
+
+<h2 id="psst">Psst</h2>
+
+<blockquote>
+  <p><a href="https://www.macupdate.com/app/mac/16780/psst">Psst for Mac  MacUpdate</a></p>
+</blockquote>
+
+<p>It just changes a sound level at shutting down.</p>
+
+<p>When it is launched, you will see following window:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160518_psstinactive.jpg" alt="psstinactive" class="pic" /></p>
+
+<p>then, set <strong>Start Psst</strong>:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160518_psstactive.jpg" alt="psstactive" class="pic" /></p>
+
+<p>Under this condition,
+a sound level will be changed at shutting down.
+It is not needed to keep the application running.</p>
+
+<p>But it works only once.</p>
+
+<p>After rebooting, you need to set it again,
+so it is not so useful…</p>
+
+<h2 id="startupsoundprefpane">StartupSound.prefPane</h2>
+
+<blockquote>
+  <p><a href="https://www.macupdate.com/app/mac/16425/startupsound.prefpane">StartupSound.prefPane for Mac  MacUpdate</a></p>
+</blockquote>
+
+<p>StarupSound.prefPane adds new menu to manage a start up chime in System Preferences.</p>
+
+<p>But it seems it is no longer compatible after Marvericks.</p>
+
+<h2 id="bequiet">beQUIET</h2>
+
+<p><a href="https://itunes.apple.com/app/bequiet/id449472645?mt=12&amp;at=10lc94" target="_blank" rel="nofollow"><img width="100" class="alignleft" align="left" src="http://is3.mzstatic.com/image/pf/us/r30/Purple/v4/df/69/e1/df69e14c-d722-9698-20bc-b7a33eeeec41/beQUIET251.100x100-75.png" style="border-radius: 20px 20px 20px 20px;-moz-border-radius: 20px 20px 20px 20px;-webkit-border-radius: 20px 20px 20px 20px;box-shadow: 1px 4px 6px 1px #999999;-moz-box-shadow: 1px 4px 6px 1px #999999;-webkit-box-shadow: 1px 4px 6px 1px #999999;margin: -5px 15px 1px 5px;" /></a><strong> <a href="https://itunes.apple.com/app/bequiet/id449472645?mt=12&amp;at=10lc94" target="_blank" rel="nofollow">beQUIET v2.59($5.99)</a></strong></p>
+
+<p>This application changes a sound level of an internal speaker.
+It has options to set a sound level of a start up chime
+and a sound level after booting.</p>
+
+<p>It is paid application, but it is different from above applications that
+it can change an internal speaker’s volume level directly.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>I’m currently using Volume Reset as it satisfies what I want to do.
+A start up chime is annoying, but there are more opportunities
+to bring it under sleep and not want to make sounds.</p>
+
+<p>I think it would be better if I can use <strong>SystemAudioVolume</strong>,
+but it doesn’t work well.</p>
+
+<p>Anyway, I usually set a sound level of the internal speaker to be zero,
+and use a headphone at a desk.
+But still sometime I use the internal speaker,
+and Volume Reset works excellently.</p>
+
+<p>By the way, though I have written about disabling a start up chime,
+Mac has a function to notify problems by the start up chime
+by changing a number of times or tone.</p>
+
+<blockquote>
+  <p><a href="https://support.apple.com/en-us/HT202768">About Mac computer startup tones - Apple Support</a></p>
+</blockquote>
+
+<p>So if you need this function, you should not disable a sound.</p>
+
+<p>Nevertheless, I want to disable it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A bit more detail about SIP (System Integrity Protection) of OS X 10.11 El Capitan]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/17/computer-mac/"/>
+    <updated>2016-05-17T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/17/computer-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="https://www.amazon.co.jp/gp/product/B016AZMAIS?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B016AZMAIS&amp;linkCode=shr&amp;tag=rcmdnk0c-22" rel="nofollow" target="_blank"><img width="200" height="200" src="https://images-fe.ssl-images-amazon.com/images/I/510n9cnBIrL._SS200_.jpg" alt="The Complete Beginners Guide to Mac OS X El Capitan: (For MacBook, MacBook Air, MacBook Pro, iMac, Mac Pro, and Mac Mini) (English Edition) " /></a></div>
+
+<p>OS X 10.11 El Capitan adopts new security system called
+SIP (System Integrity Protection).</p>
+
+<p>This new system affects some applications and
+some of them can not be used under it.
+It also affects on <a href="https://rcmdnk.com/en/blog/tags/homebrew/">Homebrew</a>.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#sip-system-integrity-protection" id="markdown-toc-sip-system-integrity-protection">SIP (System Integrity Protection)</a></li>
+  <li><a href="#filesdirectories-under-the-protection" id="markdown-toc-filesdirectories-under-the-protection">Files/directories under the protection</a></li>
+  <li><a href="#disabling-sip" id="markdown-toc-disabling-sip">Disabling SIP</a></li>
+  <li><a href="#nvram-related-to-sip" id="markdown-toc-nvram-related-to-sip">NVRAM related to SIP</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="sip-system-integrity-protection">SIP (System Integrity Protection)</h1>
+
+<p>SIP (System Integrity Protection) is new security system
+adopted in OS X El Capitan.</p>
+
+<p>It is sometime called <strong>rootless</strong><sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup>,
+because it reduces authorities of root.</p>
+
+<p>Under this security system, even root can modify limited files/directories,
+and some processes are also limited to be modified.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160517_osxsecuritylayers.png" alt="20160517_osxsecuritylayers.png" class="pic" /></p>
+
+<p>This is conceptual picture of El Capitan’s security layer.</p>
+
+<ul>
+  <li>Gatekeeper</li>
+</ul>
+
+<p>At the outermost, Gatekeeper
+<sup id="fninref:2"><a href="#fnin:2" rel="footnote">2</a></sup>
+rejects to install applications which do not have a correct developer ID.</p>
+
+<ul>
+  <li>Sandbox</li>
+</ul>
+
+<p>Applications, which are confirmed by Gatakeeper, are launched in a sandbox
+<a href="http://www.apple.com/osx/what-is/security/">OS X - Security - Apple</a>.
+This protects data of OS X from unexpected access/change by applications.</p>
+
+<ul>
+  <li>POSIX</li>
+</ul>
+
+<p>In addition, as OS X is UNIX, it has an access control of POSIX,
+which limits access/change authorities of each file/directory for each user.</p>
+
+<p>In POSIX control, basically root can access/change all files/directories.</p>
+
+<ul>
+  <li>Keychain</li>
+</ul>
+
+<p>At the innermost, there is Keychain.
+Keychain is special database which has such password information,
+and is encrypted.
+It is strongly protected and even root can not access directly.</p>
+
+<p>In short, OS X’s security system can be described like this.
+But there is a problem, until Yosemite (or say in Unix), that
+if someone obtains full authority at <strong>POSIX</strong>, he/she can change everything
+other than Keychain
+<sup id="fninref:3"><a href="#fnin:3" rel="footnote">3</a></sup>.</p>
+
+<p>To solve this, new system which limits the authority of root.
+(This is pictured as separated parts of <strong>Keychain</strong> in the above picture.)</p>
+
+<p>Under this system, even if a user allows root authority to applications,
+some parts in OS X are protected for sure.</p>
+
+<p>But it becomes too strong and some applications can work under this system any more…</p>
+
+<h1 id="filesdirectories-under-the-protection">Files/directories under the protection</h1>
+
+<p>Protected files/directories are written in</p>
+
+<pre><code>/System/Library/Sandbox/rootless.conf
+</code></pre>
+
+<p>Try to check:</p>
+
+<pre><code>$ cat /System/Library/Sandbox/rootless.conf
+                /Applications/App Store.app
+                /Applications/Automator.app
+                /Applications/Calculator.app
+                /Applications/Calendar.app
+                /Applications/Chess.app
+                /Applications/Contacts.app
+                /Applications/Dashboard.app
+                /Applications/Dictionary.app
+                /Applications/DVD Player.app
+                /Applications/FaceTime.app
+                /Applications/Font Book.app
+                /Applications/Game Center.app
+                /Applications/Image Capture.app
+                /Applications/Launchpad.app
+                /Applications/Mail.app
+                /Applications/Maps.app
+                /Applications/Messages.app
+                /Applications/Mission Control.app
+                /Applications/Notes.app
+                /Applications/Photo Booth.app
+                /Applications/Photos.app
+                /Applications/Preview.app
+                /Applications/QuickTime Player.app
+                /Applications/Reminders.app
+                /Applications/Safari.app
+                /Applications/Stickies.app
+                /Applications/System Preferences.app
+                /Applications/TextEdit.app
+                /Applications/Time Machine.app
+                /Applications/Utilities/Activity Monitor.app
+                /Applications/Utilities/AirPort Utility.app
+                /Applications/Utilities/Audio MIDI Setup.app
+                /Applications/Utilities/Bluetooth File Exchange.app
+                /Applications/Utilities/Boot Camp Assistant.app
+                /Applications/Utilities/ColorSync Utility.app
+                /Applications/Utilities/Console.app
+                /Applications/Utilities/Digital Color Meter.app
+                /Applications/Utilities/Disk Utility.app
+                /Applications/Utilities/Feedback Assistant.app
+                /Applications/Utilities/Grab.app
+                /Applications/Utilities/Grapher.app
+                /Applications/Utilities/Keychain Access.app
+                /Applications/Utilities/Migration Assistant.app
+                /Applications/Utilities/Script Editor.app
+                /Applications/Utilities/System Information.app
+                /Applications/Utilities/Terminal.app
+                /Applications/Utilities/VoiceOver Utility.app
+                /Library/Preferences/SystemConfiguration/com.apple.Boot.plist
+                /System
+*               /System/Library/Caches
+booter          /System/Library/CoreServices
+*               /System/Library/CoreServices/Photo Library Migration Utility.app
+                /System/Library/CoreServices/RawCamera.bundle
+*               /System/Library/Extensions
+                /System/Library/Extensions/*
+UpdateSettings  /System/Library/LaunchDaemons/com.apple.UpdateSettings.plist
+*               /System/Library/Speech
+*               /System/Library/User Template
+                /bin
+dyld            /private/var/db/dyld
+                /sbin
+                /usr
+*               /usr/libexec/cups
+*               /usr/local
+*               /usr/share/man
+# symlinks
+                /etc
+                /tmp
+                /var
+</code></pre>
+
+<p>Like this.</p>
+
+<p>You can see such <strong>/System</strong>, <strong>/user</strong>, <strong>/bin</strong>, or <strong>/sbin</strong>.</p>
+
+<p>In addition, some pre-installed applications are also included.</p>
+
+<p>In the list, lines starting with <code>*</code> means that these files/directories
+are not protected even if they are under protected directories.</p>
+
+<p>Therefore, <strong>/user</strong> is under protection but <strong>/usr/local</strong> is not
+and user can modify it.</p>
+
+<h1 id="disabling-sip">Disabling SIP</h1>
+
+<p>As described above, <strong>/usr/local</strong> can be modified,
+but you can not make new directory under <strong>/usr</strong>,
+so if <strong>/usr/local</strong> does not exist, <strong>/usr/local</strong> can not be created.</p>
+
+<p>In addition, some applications are listed, too,
+and it means you can not modify such icons of them.</p>
+
+<p>To modify them, you need to disable SIP.</p>
+
+<p>To disable SIP, first launch OS X in Recovery Mode,
+start OS X with pushing <i class="key">⌘</i>-<i class="key">R</i>.</p>
+
+<p>In Recovery Mode, you can find <strong>Utility</strong> in the menu bar,
+and there is <strong>Terminal</strong>.</p>
+
+<p>Launch <strong>Terminal</strong> and execute command:</p>
+
+<pre><code>-bash-3.2 # csrutil disable
+Successfully disabled System Integrity Protection. Please restart the machine for the changes to take effect.
+-bash-3.2 #
+</code></pre>
+
+<p>After reboot and launch OS X normally, SIP is disabled.</p>
+
+<p>To check it, launch terminal and execute command:</p>
+
+<pre><code>$ csrutil status
+System Integrity Protection status: enabled (Custom Configuration).
+
+Configuration:
+        Apple Internal: disabled
+        Kext Signing: enabled
+        Filesystem Protections: disabled
+        Debugging Restrictions: disabled
+        DTrace Restrictions: disabled
+        NVRAM Protections: disabled
+
+This is an unsupported configuration, likely to break in the future and leave your machine in an unknown state.
+$
+</code></pre>
+
+<p>It should be like this<sup id="fninref:4"><a href="#fnin:4" rel="footnote">4</a></sup>.</p>
+
+<p>Here, it says <code>enabled</code> like:</p>
+
+<pre><code>System Integrity Protection status: enabled (Custom Configuration).
+</code></pre>
+
+<p>but you can see that each component under it are all disabled.</p>
+
+<p>To modify icons or creating <strong>/usr/local</strong>,
+SIP need to be disabled temporarily,
+so that it may be better to re-enable SIP after changes.</p>
+
+<p>To enable SIP, launch OS X in Recovery Mode again,
+and execute following command in terminal:</p>
+
+<pre><code>-bash-3.2 # csrutil enable
+Successfully enabled System Integrity Protection. Please restart the machine for the changes to take effect.
+-bash-3.2 #
+</code></pre>
+
+<p>Then reboot.</p>
+
+<p>To check SIP, use <code>csrutil status</code>:</p>
+
+<pre><code>$ csrutil status
+System Integrity Protection status: enabled.
+$
+</code></pre>
+
+<p>Now SIP is enabled completely.</p>
+
+<p>On the other hand, if you want to use such
+<a href="http://www.trankynam.com/xtrafinder/">XtraFinder</a>
+or <a href="http://totalfinder.binaryage.com/">TotalFinder</a>,
+you need to disable SIP always.</p>
+
+<p>These applications seem not compatible with El Capitan,
+but you can use them if SIP is disabled.</p>
+
+<p>But it is a bit unsecure if you disable all SIP functions.
+If you see above 
+<code>csrutil status</code> results, you can see that
+SIP is separated in some groups.</p>
+
+<p>For such XtraFinder, you can disable only a part by command of <code>csrutil enable -without debug</code>:</p>
+
+<pre><code>-bash-3.2 # csrutil enable --without debug
+csrutil: requesting an unsupported configuration. This is likely break in the future and leave your machine in an unknown state.
+Successfully enabled System Integrity Protection. Please restart the machine for the changes to take effect.
+-bash-3.2 #
+</code></pre>
+
+<p>This enables all SIP functions but <code>debug</code> part.
+This command can be used even if all SIP is enabled.
+(It disables only <code>debug</code> part.)</p>
+
+<p>After executing this command, you can see the status like:</p>
+
+<pre><code>$ csrutil status
+System Integrity Protection status: enabled (Custom Configuration).
+
+Configuration:
+        Apple Internal: disabled
+        Kext Signing: enabled
+        Filesystem Protections: enabled
+        Debugging Restrictions: disabled
+        DTrace Restrictions: enabled
+        NVRAM Protections: enabled
+
+This is an unsupported configuration, likely to break in the future and leave your machine in an unknown state.
+$
+</code></pre>
+
+<p>So, only <strong>Apple Internal</strong> and <strong>Debugging Restrictions:</strong> are disabled.</p>
+
+<p>Such <strong>FileSystem Protections</strong> is enabled,
+therefore you can not modify <strong>/usr</strong> even as root in this case.</p>
+
+<p>Under this condition, you can use XtraFinder or TotalFinder.
+If you want to use them, it is better to disable minimal part (<code>debug</code> part).</p>
+
+<p>If you want to disable only <strong>FileSystem Protections</strong>,
+you can use <code>--without fs</code>:</p>
+
+<pre><code>-bash-3.2 # csrutil enable --without fs
+</code></pre>
+
+<h1 id="nvram-related-to-sip">NVRAM related to SIP</h1>
+
+<p>I found some documents which show that SIP can be disabled not entering Recovery Mode,
+for example:</p>
+
+<blockquote>
+  <p><a href="https://www.cryptomonkeys.com/2015/07/osx-rootless-boot-args/">Rootless and boot-args · Cryptomonkeys Consulting</a></p>
+</blockquote>
+
+<p>Here, you can disable SIP by using command:</p>
+
+<pre><code>$ sudo nvram boot-args="rootless=0"
+</code></pre>
+
+<p>in normal mode, and restarting,
+but I could not reproduce it.</p>
+
+<p>In addition, it is said that a command</p>
+
+<pre><code>$ sudo nvram boot-args="-x"
+</code></pre>
+
+<p>makes the next boot to be Safe Mode.
+But I can’t do it, neither.</p>
+
+<p>NVRAM is small memory which has some OS X settings<sup id="fninref:5"><a href="#fnin:5" rel="footnote">5</a></sup>.</p>
+
+<p>In above SIP’s status list, you can find <strong>NVRAM Protections</strong>, so that
+this is also protected by SIP.</p>
+
+<p>Therefore, NVRAM can not be modified if SIP is enabled.</p>
+
+<p>In addition, I found following article:</p>
+
+<blockquote>
+  <p><a href="http://www.idelta.info/archives/sip-rootless-internal-in-el-capitan/">SIP/Rootless Internal in El Capitan  Delta’s Lair</a></p>
+</blockquote>
+
+<p>It explains what is changed by <code>csrutil</code>.
+It is boot property data and SIP information is included in it.</p>
+
+<p>For example, such <code>--without debug</code> changes only some bit.</p>
+
+<p>But it says that such <code>"rootless=0"</code> is removed at El Capitan.</p>
+
+<p>It seems that these SIP related things are changed so much since Beta version,
+such that GUI application was there.
+Therefore, you need to be careful about information
+as it is very deep settings in OS.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adding additional file usage to Brew-file]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/06/03/computer-brew-file-homebrew-mac/"/>
+    <updated>2015-06-03T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/06/03/computer-brew-file-homebrew-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00PUGKX2Y/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/81R5LNqLdVL._SS200_.png" alt="File Manager" /></a></div>
+
+<p>New Brewfile’s command <code>file</code> has been added
+to <a href="https://rcmdnk.com/en/blog/tags/brew-file/">Brew-file</a>.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#file-commands" id="markdown-toc-file-commands">file commands</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="file-commands">file commands</h1>
+
+<div class="github-widget" data-repo="rcmdnk/homebrew-file"></div>
+
+<p>In Brew-file for Brwefile management,
+new command <code>file</code> has been added
+as an Brewfile’s format.</p>
+
+<p>In Brewfile, you can use <code>file</code> like:</p>
+
+<figure class="code"><figcaption><span>Brwefile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># Additional files
+</span><span class="line">file ~/.Brwefile
+</span><span class="line">file ./${HOST}.Brewfile</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, Brew-file picks up settings in <strong>~/.Brewfile</strong> and <strong>./${HOST}.Brewfile</strong>, too.</p>
+
+<p>In the path for additional files,
+such <code>~</code> can be used as <code>$HOME</code>,
+and any environmental variables, like <code>$HOST</code>, can be used.</p>
+
+<p>If the path is relative, the path starts from the directory
+in which the original Brewfile is stored.</p>
+
+<p>If you have Brewfile in the original path,</p>
+
+<pre><code>/usr/local/Library/Brewfile
+</code></pre>
+
+<p>then <strong>./${HOST}.Brewfile</strong> is</p>
+
+<pre><code>/usr/local/Library/${HOST}.Brewfile
+</code></pre>
+
+<p>You can use <code>file</code> nesting, too.</p>
+
+<p>There is another command, <code>brewfile</code>, which works exactly as same as <code>file</code>.</p>
+
+<p>For example, if you want to divide Cask settings,
+then write</p>
+
+<pre><code>file ./Cask.Brewfile
+</code></pre>
+
+<p>in the main Brewfile, and prepare <strong>Cask.Brewfile</strong> with Cask settings.</p>
+
+<p>If you want to use different settings for the different Mac,
+such <strong>${HOST}.Brewfile</strong> is useful.</p>
+
+<p>Or you can use <strong>~/.Brewfile</strong> in each Mac for special settings.</p>
+
+<p>If the corresponding file is not found, Brew-file just ignores it.
+Therefore, you can use same Brewfile in Mac, which has <strong>~/.Brewfile</strong>
+and doesn’t have <strong>~/.Brewfile</strong>.</p>
+
+<p>When a such <code>init</code> command is executed,
+first Brew-file prepares a list of packages installed by Homebrew.</p>
+
+<p>Next, check packages in the additional files,
+and if the additional files have not installed packages,
+they are deleted from the additional files.</p>
+
+<p>On the other hand, packages listed in the additional files are removed from the list.</p>
+
+<p>Then, the additional files are restored,
+and remaining packages in the list are written out to main Brewfile.</p>
+
+<p>To refer files used by Brew-file,
+you can use new Brew-file command, <code>get_files</code>:</p>
+
+<pre><code>$ brew file get_files
+/usr/local/Library/rcmdnk_Brewfile/Brewfile
+/usr/local/Library/rcmdnk_Brewfile/mymac.Brewfile
+/Users/user/.Brewfile
+</code></pre>
+
+<p>Recent other updates:</p>
+
+<blockquote>
+  <p><a href="https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac/">Brew-file update: completion, wrapper commands</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Brew-file update: completion, wrapper commands]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac/"/>
+    <updated>2015-05-15T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/05/15/computer-brew-file-homebrew-mac</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00VU5HR1Y/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51eQpBDjdRL._SS200_.jpg" alt="The Completion " /></a></div>
+
+<p><a href="https://github.com/rcmdnk/homebrew-file">Brew-file</a>
+has been updated.</p>
+
+<p>The new wrapper function allows you to use some subcommands of <code>brew-file</code>
+directly as a <code>brew</code>’s subcommand.</p>
+
+<p>Completion functions are also implemented for both Bash and Zsh.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#completion" id="markdown-toc-completion">Completion</a></li>
+  <li><a href="#brew-wrap" id="markdown-toc-brew-wrap">brew-wrap</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="completion">Completion</h1>
+
+<div class="github-widget" data-repo="rcmdnk/homebrew-file"></div>
+
+<p>There are new files of <a href="https://github.com/rcmdnk/homebrew-file/blob/master/etc/bash_completion.d/brew-file">etc/bash_completion.d/brew-file</a>
+and
+<a href="https://github.com/rcmdnk/homebrew-file/blob/master/share/zsh/site-functions/_brew-file">share/zsh/site-functions/_brew-file</a>.</p>
+
+<p><strong>_brew-file</strong> is just a symbolic link to <strong>brew-file</strong>.</p>
+
+<p>They have the functions of the completion for <code>brew-file</code> command.</p>
+
+<p>To enable the completion, please add the following settings for each Bash or Zsh.</p>
+
+<ul>
+  <li>For Bash</li>
+</ul>
+
+<p>First, please install
+<a href="http://bash-completion.alioth.debian.org/">Bash-Completion</a>
+by:</p>
+
+<pre><code>$ brew install bash-completion
+</code></pre>
+
+<p>Then, add following settings to your <strong>.bashrc</strong>:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="nv">brew_completion</span><span class="o">=</span><span class="k">$(</span>brew --prefix <span class="m">2</span>&gt;/dev/null<span class="k">)</span>/etc/bash_completion
+</span><span class="line"><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;</span><span class="nv">$brew_completion</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">  <span class="nb">source</span> <span class="nv">$brew_completion</span>
+</span><span class="line"><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<ul>
+  <li>For Zsh</li>
+</ul>
+
+<p>Add following settings in your <strong>.zshrc</strong>:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="nv">brew_completion</span><span class="o">=</span><span class="k">$(</span>brew --prefix <span class="m">2</span>&gt;/dev/null<span class="k">)</span>/share/zsh/zsh-site-functions
+</span><span class="line"><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -d <span class="s2">&quot;</span><span class="nv">$brew_completion</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">  <span class="nv">fpath</span><span class="o">=(</span><span class="nv">$brew_completion</span> <span class="nv">$fpath</span><span class="o">)</span>
+</span><span class="line"><span class="k">fi</span>
+</span><span class="line">autoload -U compinit
+</span><span class="line">compinit
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In case you have installed <a href="https://github.com/zsh-users/zsh-completions">zsh-completions</a>
+ (can be installed by brew: <code>$ brew install zsh-completions</code>)、
+settings can be like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="k">for</span> d in <span class="s2">&quot;/share/zsh-completions&quot;</span> <span class="s2">&quot;/share/zsh/zsh-site-functions&quot;</span><span class="p">;</span><span class="k">do</span>
+</span><span class="line">  <span class="nv">brew_completion</span><span class="o">=</span><span class="k">$(</span>brew --prefix <span class="m">2</span>&gt;/dev/null<span class="k">)</span><span class="nv">$d</span>
+</span><span class="line">  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -d <span class="s2">&quot;</span><span class="nv">$brew_completion</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">    <span class="nv">fpath</span><span class="o">=(</span><span class="nv">$brew_completion</span> <span class="nv">$fpath</span><span class="o">)</span>
+</span><span class="line">  <span class="k">fi</span>
+</span><span class="line"><span class="k">done</span>
+</span><span class="line">autoload -U compinit
+</span><span class="line">compinit
+</span></code></pre></td></tr></table></div></figure>
+
+<p>to enable both <strong>zsh-completions</strong>  and <strong>site-functions</strong>.</p>
+
+<h1 id="brew-wrap">brew-wrap</h1>
+
+<p>The above completion is done only for <code>brew-file</code> command.
+It doesn’t complete such <code>brew file</code> (<code>brew</code> + <code>file</code> subcommand).</p>
+
+<p><a href="https://github.com/rcmdnk/homebrew-file/blob/master/etc/brew-wrap">etc/brew-wrap</a>
+has a wrapper setting to override original <code>brew</code> completion.
+It adds <code>file</code> subcommand to <code>brew</code>, and enable a completion
+for <code>brew file</code> as same as <code>brew-file</code>.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="c1"># wrap brew (brew-wrap in brew-file)</span>
+</span><span class="line"><span class="k">if</span> <span class="o">[</span> -f <span class="k">$(</span>brew --prefix<span class="k">)</span>/etc/brew-wrap <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">  <span class="nb">source</span> <span class="k">$(</span>brew --prefix<span class="k">)</span>/etc/brew-wrap
+</span><span class="line"><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>This file should be read after above completion settings, like</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="c1"># Bash completion</span>
+</span><span class="line"><span class="nv">brew_completion</span><span class="o">=</span><span class="k">$(</span>brew --prefix <span class="m">2</span>&gt;/dev/null<span class="k">)</span>/etc/bash_completion
+</span><span class="line"><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;</span><span class="nv">$brew_completion</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">  <span class="nb">source</span> <span class="nv">$brew_completion</span>
+</span><span class="line"><span class="k">fi</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># wrap brew (brew-wrap in brew-file)</span>
+</span><span class="line"><span class="k">if</span> <span class="o">[</span> -f <span class="k">$(</span>brew --prefix<span class="k">)</span>/etc/brew-wrap <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line">  <span class="nb">source</span> <span class="k">$(</span>brew --prefix<span class="k">)</span>/etc/brew-wrap
+</span><span class="line"><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><code>brew-wrap</code> wraps <code>brew</code> command itself
+to automatically update Brewfile after such <code>brew install</code> or <code>brew uninstall</code>.</p>
+
+<p>Moreover, some subcommands of <code>brew-file</code>
+can be used directly as a <code>brew</code>’s subcommand,
+if the command is not in originally <code>brew</code>’s subcommands.</p>
+
+<p>Such <code>init</code> or <code>casklist</code> are not in <code>brew</code>’s subcommands.
+Therefore</p>
+
+<pre><code>$ brew init
+</code></pre>
+
+<p>becomes as same as</p>
+
+<pre><code>$ brew file init
+</code></pre>
+
+<p>and</p>
+
+<pre><code>$ brew casklist
+</code></pre>
+
+<p>can be used as</p>
+
+<pre><code>$ brew file casklist
+</code></pre>
+
+]]></content>
+  </entry>
+  
+</feed>
