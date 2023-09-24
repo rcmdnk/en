@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2023-09-24T00:38:09+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notice a copy event on your blog in Google Analytics]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript/"/>
+    <updated>2015-01-27T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0672333201/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41q08y3QGAL._SS200_.jpg" alt="Sams Teach Yourself Google Analytics in 10 Minutes" /></a></div>
+
+<p>In the post <a href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript/">Notice a copy event on your blog by email only by JavaScript</a>,
+the copy events are sent to Mandrill to make an email notice.</p>
+
+<p>In this post, I would introduce how to analyze such events
+in Google Analytics.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#javascript-code" id="markdown-toc-javascript-code">JavaScript Code</a></li>
+  <li><a href="#check-copy-events-in-google-analytics" id="markdown-toc-check-copy-events-in-google-analytics">Check copy events in Google Analytics</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="javascript-code">JavaScript Code</h1>
+
+<p>Here is a snippet to send a copy event to Google Analytics:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">oncopy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">sel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">();</span>
+</span><span class="line"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sel</span><span class="p">.</span><span class="nx">rangeCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sel</span><span class="p">.</span><span class="nx">rangeCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">len</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">                </span><span class="nx">container</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">sel</span><span class="p">.</span><span class="nx">getRangeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">cloneContents</span><span class="p">());</span>
+</span><span class="line"><span class="w">            </span><span class="p">}</span>
+</span><span class="line"><span class="w">            </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+</span><span class="line"><span class="w">        </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">            </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">createRange</span><span class="p">().</span><span class="nx">htmlText</span><span class="p">;</span>
+</span><span class="line"><span class="w">        </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">selected</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span class="line"><span class="w">    </span><span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;event&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;copy&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">);</span>
+</span><span class="line"><span class="w">  </span><span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Place this code in your <code>&lt;head&gt;...&lt;/head&gt;</code> as above.</p>
+
+<p>In this code, it assumes Universal Analytics version (analytics.js).</p>
+
+<p>The key point is usage of Analytics’ event tracking:</p>
+
+<pre><code>ga('send', 'event', 'copy', location.href + ':' + document.title, selected);
+</code></pre>
+
+<p>In this function, arguments mean:</p>
+
+<ul>
+  <li>1st arg: <strong>Command</strong>. <code>send</code> to send information to Google Analytics.</li>
+  <li>2nd arg: <strong>hitType</strong>. <code>event</code> to set Event Tracking.</li>
+  <li>3rd arg: <strong>eventCategory</strong>. Category of the event (&lt;150bytes).</li>
+  <li>4th arg: <strong>eventAction</strong>. Action of the event (&lt;150bytes).</li>
+  <li>5th arg: <strong>eventLabel</strong>. Label of the event (&lt;150bytes).</li>
+  <li>6th arg: <strong>eventValue</strong>. Value of the event (&gt;=0). It is omitted in this time.</li>
+</ul>
+
+<p>If you are using old version (ga.js), replace:</p>
+
+<pre><code>ga('send', 'event', 'copy', location.href + ':' + document.title, selected);
+</code></pre>
+
+<p>with</p>
+
+<pre><code>_gaq.push(['_trackEvent', 'copy', location.href + ':' + document.title, selected]);
+</code></pre>
+
+<h1 id="check-copy-events-in-google-analytics">Check copy events in Google Analytics</h1>
+
+<p>You can find the results in <strong>Behavior</strong><i class="fa fa-arrow-right"></i><strong>Events</strong>.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150127_behavior.jpg" alt="behavior" class="pic" /></p>
+
+<p>In <strong>Overview</strong>, <strong>copy</strong> category is there.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150127_eventcategory.jpg" alt="eventcategory" class="pic" /></p>
+
+<p>Choose <strong>copy</strong> and click <strong>Event Action</strong>, there is a page list.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150127_eventaction.jpg" alt="eventaction" class="pic" /></p>
+
+<p>If go to <strong>Event Label</strong>, you can find what were copied in your blog.
+If you choose any page in <strong>Event Action</strong> first, then go to <strong>Event Label</strong>,
+only copies of the selected page are shown.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150127_eventlabel.jpg" alt="eventlabel" class="pic" /></p>
+
+<p>In above snippet, copied region is sent as HTML.
+Therefore, if the large region is copied, you will see sentences with HTML tags.</p>
+
+<p><img src="//rcmdnk.com/images/post/20150105_longlabel.jpg" alt="eventlabel2" class="pic" /></p>
+
+<p>If you wish to have only text, manage <code>select</code> variable in above snippet like:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">-selected = container.innerHTML;</span>
+</span><span class="line"><span class="gi">+selected = container.innerText;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>and</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">-selected = document.selection.createRange().htmlText;</span>
+</span><span class="line"><span class="gi">+selected = document.selection.createRange().text;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>At <strong>Event Category</strong> page,
+you can use <strong>Secondary dimension</strong> to divide events into each page or title, too.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150127_secondarydimension.jpg" alt="secondarydimension" class="pic" /></p>
+
+<p>If you want to add more marks to divide into,
+you can use <strong>Event Action</strong> instead of the page url+title.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

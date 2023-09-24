@@ -1,0 +1,1435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2023-09-24T00:38:09+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Enable an event tracking of Google Website Translator with Universal Analytics]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/28/blog-javascript/"/>
+    <updated>2015-01-28T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/28/blog-javascript</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0596158009/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51j60chkWrL._SS200_.jpg" alt="Google Analytics" /></a></div>
+
+<p>I recently noticed that an event tracking of Google Website Translator is no longer available.</p>
+
+<p>What I was changed is the code of Google Analytics: old <strong>ga.js</strong> code to
+new Universal Analytics code, <strong>analytics.js</strong>.</p>
+
+<p>It seems Google Translate code is not updated for Universal Analytics.
+Here is my attempt to fix it by modifying core codes of Google Translate.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#put-google-website-translator-in-your-blog" id="markdown-toc-put-google-website-translator-in-your-blog">Put Google Website Translator in your blog</a></li>
+  <li><a href="#how-to-fix" id="markdown-toc-how-to-fix">How to fix</a></li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="put-google-website-translator-in-your-blog">Put Google Website Translator in your blog</h1>
+
+<p>You can easily put <a href="https://translate.google.com/manager/website/suggestions">Google Website Translator</a>
+by following the instruction on the page.</p>
+
+<p>You can also put your Analytics code to track translation events
+by Google Analytics.</p>
+
+<p>Events have information of which languages are used in <strong>Event Label</strong>.</p>
+
+<p>It had worked for a long time, but suddenly, it stopped working.
+It seems it stopped when I updated some codes of JavaScript,
+especially I updated Google Analytics code from old <strong>ga.js</strong> to Universal Analytics <strong>analytics.js</strong>.</p>
+
+<p>I found some posts related to this problem:</p>
+
+<blockquote>
+  <p><a href="http://webmasters.stackexchange.com/questions/52557/google-translate-data-tracked-with-gatrack-is-not-showing-up-in-google-analytics">Google Translate data tracked with gaTrack is not showing up in Google Analytics? - Webmasters Stack Exchange</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://groups.google.com/forum/#!topic/google-analytics-analyticsjs/6XPCCy3FSlw">google translate events not in analytics anymore.</a></p>
+</blockquote>
+
+<p>The first one was posted in September/2013, and the latter was posted on 22/January /2015.
+So, it seems this problem is a remaining problem since Universal Analytics was released.</p>
+
+<h1 id="how-to-fix">How to fix</h1>
+
+<p>From <a href="https://translate.google.com/manager/website/suggestions">Google Website Translator</a>,
+codes like below are provided:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;google_translate_element&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="kd">function</span><span class="w"> </span><span class="nx">googleTranslateElementInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">google</span><span class="p">.</span><span class="nx">translate</span><span class="p">.</span><span class="nx">TranslateElement</span><span class="p">({</span><span class="nx">pageLanguage</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="nx">google</span><span class="p">.</span><span class="nx">translate</span><span class="p">.</span><span class="nx">TranslateElement</span><span class="p">.</span><span class="nx">InlineLayout</span><span class="p">.</span><span class="nx">SIMPLE</span><span class="p">,</span><span class="w"> </span><span class="nx">autoDisplay</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">multilanguagePage</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">gaTrack</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">gaId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UA-XXXXXXXX-X&#39;</span><span class="p">},</span><span class="w"> </span><span class="s1">&#39;google_translate_element&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, let’s check <strong>element.js</strong>:</p>
+
+<blockquote>
+  <p><a href="http://translate.google.com/translate_a/element.js">http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit</a> (<a href="http://codebeautify.org/jsviewer/27d513">Beautified element.js</a>)</p>
+</blockquote>
+
+<p>It calls <strong>main.js</strong>:</p>
+
+<blockquote>
+  <p><a href="https://translate.googleapis.com/translate_static/js/element/main.js">https://translate.googleapis.com/translate_static/js/element/main.js</a> (<a href="http://codebeautify.org/jsviewer/9fb63d">Beautified main.js</a>)</p>
+</blockquote>
+
+<p><img alt="memo" src="https://rcmdnk.com/en/images/emoji/unicode/1f4dd.png" class="emoji" /> If your browser’s setting is other than English,
+a direct access to <strong>element.js</strong> shows different codes comparing to the Beautified code.</p>
+
+<p>For example, with Japanese environment, <strong>element.js</strong> calls <strong>main_ja.js</strong> instead of <strong>main.js</strong></p>
+
+<blockquote>
+  <p><a href="https://translate.googleapis.com/translate_static/js/element/main_ja.js">https://translate.googleapis.com/translate_static/js/element/main_ja.js</a></p>
+</blockquote>
+
+<p>In the below, <strong>element_main.js</strong> is common for all language,
+while such <strong>0/main.js</strong> is replaced by <strong>0/main_ja.js</strong> in Japanese environment.</p>
+
+<p>It is too tight to follow all scripts.
+Therefore, in this attempt, I use only <strong>main.js</strong> from <strong>element.js</strong>.
+As a result, the translator button will be always English version.</p>
+
+<p>Anyway, <strong>main.js</strong> calls:</p>
+
+<blockquote>
+  <p><a href="https://translate.googleapis.com/translate_static/js/element/0/main.js">https://translate.googleapis.com/translate_static/js/element/0/main.js</a></p>
+</blockquote>
+
+<p>or</p>
+
+<blockquote>
+  <p><a href="https://translate.googleapis.com/translate_static/js/element/26/element_main.js">https://translate.googleapis.com/translate_static/js/element/26/element_main.js</a></p>
+</blockquote>
+
+<p>Let’s check these scripts precisely.
+Hereafter, I would use <strong>0_main.js</strong> for above <strong>element/0/main.js</strong> to distinguish from <strong>element/man.js</strong>.</p>
+
+<blockquote>
+  <p><a href="http://codebeautify.org/jsviewer/9629b6">0_main.js</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="http://codebeautify.org/jsviewer/87703f">element_main.js</a></p>
+</blockquote>
+
+<p>In the beautified code, you can find following part in <strong>0_main.js</strong>:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="nx">Cc</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">_gaq</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">_gat</span><span class="p">)</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">  </span><span class="nx">a</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="nx">Yb</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">_gat</span><span class="p">.</span><span class="nx">_getTracker</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="nx">Yb</span><span class="p">).</span><span class="nx">_trackEvent</span><span class="p">(</span><span class="s2">&quot;Google Website Translator&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Translate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">_gat</span><span class="p">.</span><span class="nx">_getTrackerByName</span><span class="p">().</span><span class="nx">_trackEvent</span><span class="p">(</span><span class="s2">&quot;Google Website Translator&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Translate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">d</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>So, it uses only functions of <code>_gaq</code> or <code>_trackEvent</code> of <strong>ga.js</strong>.
+As a result, we can not make an event with Universal Analytics.</p>
+
+<p>Ok, now the place at where the event is created becomes clear.
+Then, it should work if the event track function of Universal Analytics is added
+by following my previous post: <a href="https://rcmdnk.com/en/blog/2015/01/27/octopress-javascript/">Notice a copy event on your blog in Google Analytics</a>,
+like:</p>
+
+<figure class="code"><figcaption><span>0_main_ja.js.diff</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">--- 0_main.orig.js      2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gi">+++ 0_main.js   2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gu">@@ -6047,6 +6047,9 @@</span>
+</span><span class="line"><span class="w"> </span>    if (a.e.Cc &amp;&amp; p._gaq &amp;&amp; p._gat) try {
+</span><span class="line"><span class="w"> </span>      a.e.Yb ? p._gat._getTracker(a.e.Yb)._trackEvent(&quot;Google Website Translator&quot;, &quot;Translate&quot;, a.d) : p._gat._getTrackerByName()._trackEvent(&quot;Google Website Translator&quot;, &quot;Translate&quot;, a.d)
+</span><span class="line"><span class="w"> </span>    } catch (e) {}
+</span><span class="line"><span class="gi">+    if (a.e.Cc &amp;&amp; p.ga ) try {</span>
+</span><span class="line"><span class="gi">+        f.ga(&#39;send&#39;, &#39;event&#39;, &quot;Google Website Translator&quot;, &quot;Translate&quot;, a.d);</span>
+</span><span class="line"><span class="gi">+    } catch (e) {}</span>
+</span><span class="line"><span class="w"> </span>  }
+</span><span class="line"><span class="w"> </span>  R.Cd = function(a, b, c) {
+</span><span class="line"><span class="w"> </span>    hc(this.gb) == &quot;function&quot; &amp;&amp; this.gb();
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class="code"><figcaption><span>element_main.js.diff</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">--- element_main.orig.js        2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gi">+++ element_main.js     2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gu">@@ -14075,6 +14075,9 @@</span>
+</span><span class="line"><span class="w"> </span>    if (a.b.hg &amp;&amp; f._gaq &amp;&amp; f._gat) try {
+</span><span class="line"><span class="w"> </span>      a.b.Ne ? f._gat._getTracker(a.b.Ne)._trackEvent(Zi, Rj, a.e) : f._gat._getTrackerByName()._trackEvent(Zi, Rj, a.e)
+</span><span class="line"><span class="w"> </span>    } catch (d) {}
+</span><span class="line"><span class="gi">+    if (a.b.hg &amp;&amp; f.ga ) try {</span>
+</span><span class="line"><span class="gi">+        f.ga(&#39;send&#39;, &#39;event&#39;, Zi, Rj, a.e);</span>
+</span><span class="line"><span class="gi">+    } catch (d) {}</span>
+</span><span class="line"><span class="w"> </span>  }
+</span><span class="line"><span class="w"> </span>  Q.Mi = function(a, b, c) {
+</span><span class="line"><span class="w"> </span>    ku(this.Ga) == Vn &amp;&amp; this.Ga();
+</span></code></pre></td></tr></table></div></figure>
+
+<p><code>p</code> and <code>f</code> are <code>Window</code> object in <strong>0_main.js</strong> and <strong>element_main.js</strong>, respectively.
+<code>Window</code> should have <code>ga</code> if <strong>analytics.js</strong> is used on the page (in the normal way),
+instead of <code>_gaq</code> of <strong>ga.js</strong>.</p>
+
+<p><code>a.b</code> and <code>a.e</code> have values of the language, so it should be in the 5th argument (<strong>Event Label</strong>).</p>
+
+<p>In <strong>element_main.js</strong>, <code>Zi</code> and <code>Rj</code> are <code>Google Website Translator</code> and <code>Translate</code>, respectively.
+So in both files, <code>ga</code> works in the same way.</p>
+
+<p>Once modifications are finished, put them in <strong>/javascripts/translate/</strong>.
+(In Octopress, put them in <strong>source/javascripts/translate/</strong>.)</p>
+
+<p>Put <strong>0_main.js</strong> as <strong>/javascripts/translate/0_main.js</strong>.</p>
+
+<p>Next, modify:</p>
+
+<blockquote>
+  <p><a href="http://codebeautify.org/jsviewer/9fb63d">main.js</a></p>
+</blockquote>
+
+<p>as</p>
+
+<figure class="code"><figcaption><span>main.js.diff</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">--- main.orig.js        2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gi">+++ main.js     2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gu">@@ -118,16 +118,13 @@</span>
+</span><span class="line"><span class="w"> </span>      }
+</span><span class="line"><span class="w"> </span>      C = &quot;26&quot;
+</span><span class="line"><span class="w"> </span>    }
+</span><span class="line"><span class="gd">-    var Q = &quot;/translate_static/js/element/%s/element_main.js&quot;.replace(&quot;%s&quot;,</span>
+</span><span class="line"><span class="gd">-    C);</span>
+</span><span class="line"><span class="gi">+    var Q = &quot;/javascripts/translate/element_main.js&quot;;</span>
+</span><span class="line"><span class="w"> </span>    if (&quot;0&quot; == C) {
+</span><span class="line"><span class="gd">-      var R = &quot; translate_static js element %s element_main.js&quot;.split(&quot; &quot;);</span>
+</span><span class="line"><span class="gd">-      R[R[d] - 1] = &quot;main.js&quot;;</span>
+</span><span class="line"><span class="gd">-      Q = R.join(&quot;/&quot;).replace(&quot;%s&quot;, C)</span>
+</span><span class="line"><span class="gi">+      Q = &quot;/javascripts/translate/0_main.js&quot;</span>
+</span><span class="line"><span class="w"> </span>    }
+</span><span class="line"><span class="gd">-    if (B._cjlc) B._cjlc(B._pas + B._pah + Q);</span>
+</span><span class="line"><span class="gi">+    if (B._cjlc) B._cjlc(Q);</span>
+</span><span class="line"><span class="w"> </span>    else {
+</span><span class="line"><span class="gd">-      var S = B._pas + B._pah + Q,</span>
+</span><span class="line"><span class="gi">+      var S = Q,</span>
+</span><span class="line"><span class="w"> </span>        T = c.createElement(&quot;script&quot;);
+</span><span class="line"><span class="w"> </span>      T.type = &quot;text/javascript&quot;;
+</span><span class="line"><span class="w"> </span>      T.charset = &quot;UTF-8&quot;;
+</span></code></pre></td></tr></table></div></figure>
+
+<p>and</p>
+
+<blockquote>
+  <p><a href="http://codebeautify.org/jsviewer/afcc47">element.js</a></p>
+</blockquote>
+
+<p>as</p>
+
+<figure class="code"><figcaption><span>element.js.diff</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="gd">--- element.orig.js     2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gi">+++ element.js  2015-01-01 00:00:00.000000000 +0000</span>
+</span><span class="line"><span class="gu">@@ -65,6 +65,6 @@</span>
+</span><span class="line"><span class="w"> </span>    c._ps = b + &#39;/translate_static/css/translateelement.css&#39;;
+</span><span class="line"><span class="w"> </span>    c._puh = &#39;translate.google.com&#39;;
+</span><span class="line"><span class="w"> </span>    _loadCss(c._ps);
+</span><span class="line"><span class="gd">-    _loadJs(b + &#39;/translate_static/js/element/main.js&#39;);</span>
+</span><span class="line"><span class="gi">+    _loadJs(&#39;javascripts/translate/main.js&#39;);</span>
+</span><span class="line"><span class="w"> </span>  })();
+</span><span class="line"><span class="w"> </span>})();
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In the last, update the original Google Website Translator code in <code>&lt;head&gt;</code>:</p>
+
+<figure class="code"><figcaption><span>head.html</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="diff"><span class="line"><span></span><span class="w"> </span>&lt;div id=&quot;google_translate_element&quot;&gt;&lt;/div&gt;&lt;script type=&quot;text/javascript&quot;&gt;
+</span><span class="line"><span class="w"> </span>function googleTranslateElementInit() {
+</span><span class="line"><span class="w"> </span>  new google.translate.TranslateElement({pageLanguage: &#39;en&#39;, layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true, gaTrack: true, gaId: &#39;UA-XXXXXXXX-X&#39;}, &#39;google_translate_element&#39;);
+</span><span class="line"><span class="w"> </span>}
+</span><span class="line"><span class="w"> </span>&lt;/script&gt;
+</span><span class="line"><span class="gd">-&lt;script src=&#39;//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&#39; async defer&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="gi">+&lt;script src=&#39;/javascripts/translate/element.js&#39; async defer&gt;&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>to call the local scripts.
+(In the modified element.js, <code>googleTranslateElementInit</code> is already set. (if you started from above beautified code.))</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>Now I can see translation events.</p>
+
+<p><img src="//rcmdnk.com/images/post/20150128_translateanalytics.jpg" alt="translateanalytics" class="pic" /></p>
+
+<p>It may be better if I can fix with short codes from outside,
+but it seems difficult to do so, then got all scripts and modified locally.</p>
+
+<p>This problem was posted in Google Group of Analytics,
+so I think Google engineers will notice and fix it soon.</p>
+
+<p>Until then, I will keep this fix to track translation events.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notice a copy event on your blog by email only by JavaScript]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript/"/>
+    <updated>2014-12-11T14:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-octopress-javascript</id>
+    <content type="html"><![CDATA[<p>B0863R7NPW</p>
+<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B0863R7NPW/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/81xurWVvLJL._SS200_.jpg" alt="Mandrill" /></a></div>
+
+<p>It is interesting to know what parts are copied by readers.</p>
+
+<p>Though GitHub Pages cannot use such PHP,
+I found a way to send email by JavaScript as written in
+<a href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/">Send a mail by JavaScript with Mandrill</a>.</p>
+
+<p>Using this function, copy notice function was implemented in this blog.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#sign-up-to-mandrill" id="markdown-toc-sign-up-to-mandrill">Sign up to Mandrill</a></li>
+  <li><a href="#javascript" id="markdown-toc-javascript">JavaScript</a></li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="sign-up-to-mandrill">Sign up to Mandrill</h1>
+
+<p>Sign up to <a href="http://mandrill.com/">Mandrill</a>,
+and get an API key.</p>
+
+<blockquote>
+  <p><a href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/">Send a mail by JavaScript with Mandrill</a>.</p>
+</blockquote>
+
+<h1 id="javascript">JavaScript</h1>
+
+<p>Prepare JavaScript like a blow:</p>
+
+<figure class="code"><figcaption><span>source/javascript/utils.js</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="nx">jQuery</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+</span><span class="line"><span class="w">  </span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">sel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">();</span>
+</span><span class="line"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sel</span><span class="p">.</span><span class="nx">rangeCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sel</span><span class="p">.</span><span class="nx">rangeCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">len</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">                </span><span class="nx">container</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">sel</span><span class="p">.</span><span class="nx">getRangeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">cloneContents</span><span class="p">());</span>
+</span><span class="line"><span class="w">            </span><span class="p">}</span>
+</span><span class="line"><span class="w">            </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+</span><span class="line"><span class="w">        </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">            </span><span class="nx">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">selection</span><span class="p">.</span><span class="nx">createRange</span><span class="p">().</span><span class="nx">htmlText</span><span class="p">;</span>
+</span><span class="line"><span class="w">        </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+</span><span class="line"><span class="w">    </span><span class="kd">var</span><span class="w">  </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+</span><span class="line"><span class="w">    </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class="line"><span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class="line"><span class="w">      </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://mandrillapp.com/api/1.0/messages/send.json&quot;</span><span class="p">,</span>
+</span><span class="line"><span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;key&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;message&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">          </span><span class="s1">&#39;from_email&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;your_sender@example.com&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">          </span><span class="s1">&#39;to&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span class="line"><span class="w">            </span><span class="p">{</span>
+</span><span class="line"><span class="w">              </span><span class="s1">&#39;email&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;your_receiver@example.com&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">              </span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;your receiver&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">              </span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;to&#39;</span>
+</span><span class="line"><span class="w">            </span><span class="p">}</span>
+</span><span class="line"><span class="w">          </span><span class="p">],</span>
+</span><span class="line"><span class="w">          </span><span class="s1">&#39;subject&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Copied at &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span>
+</span><span class="line"><span class="w">          </span><span class="s1">&#39;html&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;div&gt;&lt;a href=&quot;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&quot;&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/a&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">selected</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/div&gt;&#39;</span>
+</span><span class="line"><span class="w">        </span><span class="p">}</span>
+</span><span class="line"><span class="w">      </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">});</span>
+</span><span class="line"><span class="w">  </span><span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In Octopress, I made <code>source/javascript/utils.js</code>
+and put my functions there.</p>
+
+<p>It is read from <code>source/_includes/head.html</code>:</p>
+
+<figure class="code"><figcaption><span>source/_includes/head.html</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span>...
+</span><span class="line"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">...
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">...
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/javascripts/utils.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">...
+</span></code></pre></td></tr></table></div></figure>
+
+<p>To use the script, you just need to change:</p>
+
+<ul>
+  <li><code>key</code>: What you got from Mandrill.</li>
+  <li><code>from_email</code>: Sender’s email address. Any adress with correct shape (<code>~@XXX.YYY</code>) can be used.</li>
+  <li><code>email</code>: Receiver’s email address.</li>
+  <li><code>name</code>: Receiver’s name.</li>
+</ul>
+
+<p>In above JavaScript,
+the function is called when <code>copy</code> event occurs.
+(by <i class="key">Ctrl</i>-<i class="key">C</i>(<i class="key">Cmd</i>-<i class="key">C</i>) or from contextmenu.)</p>
+
+<p>In the function, <code>window.getSelection()</code> is used to get a selected region.
+<code>document.selection</code> part is for old IE.</p>
+
+<blockquote>
+  <p><a href="http://stackoverflow.com/questions/5643635/how-to-get-selected-html-text-with-javascript">getselection - How to get selected html text with javascript? - Stack Overflow</a></p>
+</blockquote>
+
+<p>In this way, API key is published.
+It is a bit bad, but the key is used only for this purpose,
+then I think it is ok for now.</p>
+
+<blockquote>
+  <p><a href="http://stackoverflow.com/questions/7381150/how-to-send-an-email-from-javascript">How to send an email from JavaScript - Stack Overflow</a></p>
+</blockquote>
+
+<h1 id="summary">Summary</h1>
+
+<p>Copy notice function was implemented rather easier than what I thought.</p>
+
+<p>This method is not only for Octopress, but you can use in any sites/blogs.
+It is interesting to see it.</p>
+
+<p>After the implementation, I some copies.
+It seems that there are many copies which are just accidents…<img alt="stuck_out_tongue_winking_eye" src="https://rcmdnk.com/en/images/emoji/unicode/1f61c.png" class="emoji" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Send a mail by JavaScript with Mandrill]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-javascript/"/>
+    <updated>2014-12-11T13:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-javascript</id>
+    <content type="html"><![CDATA[<p>This blog is hosted on GitHub pages, in which we cannot use such PHP.
+Even in such a situation, I found the way to send email only by JavaScript.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#mandrill" id="markdown-toc-mandrill">Mandrill</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="mandrill">Mandrill</h1>
+
+<p><a href="http://mandrill.com/">Transactional Email from MailChimp - Mandrill</a></p>
+
+<p>Mandrill is an email infrastructure service.
+With the API of Mandrill, you can send email only by JavaScript.</p>
+
+<p>You can use up to 12000 mails in free per month.
+If you need more, you can use 1000 mails/$0.20 up to 1M mails,
+1000 mails/$0.15 up to 5M mails,
+and 1000 mails/$0.10 for more.</p>
+
+<p>There is an hourly limitation, which is decided by a reputation.
+My first limit as a reputation of “Unknown” was 252 mails/hour.</p>
+
+<p>Anyway, to use the API, sign up and get a key
+from <code>Settings</code> category.</p>
+
+<p>Then, you just need to post to
+<strong>https://mandrillapp.com/api/1.0/messages/send.json</strong>
+by ajax.</p>
+
+<p>First, prepare following JavaScript (using jQuery):</p>
+
+<figure class="code"><figcaption><span>utils.js</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">sendMail</span><span class="p">(){</span>
+</span><span class="line"><span class="w">  </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class="line"><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class="line"><span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://mandrillapp.com/api/1.0/messages/send.json&quot;</span><span class="p">,</span>
+</span><span class="line"><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">      </span><span class="s1">&#39;key&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;YOUR_KEY&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">      </span><span class="s1">&#39;message&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;from_email&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;YOUR_SENDER@example.com&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;to&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span class="line"><span class="w">          </span><span class="p">{</span>
+</span><span class="line"><span class="w">            </span><span class="s1">&#39;email&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;YOUR_RECEIVER@example.com&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;YOUR_RECEIVER_NAME&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;to&#39;</span>
+</span><span class="line"><span class="w">          </span><span class="p">}</span>
+</span><span class="line"><span class="w">        </span><span class="p">],</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;subject&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span>
+</span><span class="line"><span class="w">        </span><span class="s1">&#39;html&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;html can be used&#39;</span>
+</span><span class="line"><span class="w">      </span><span class="p">}</span>
+</span><span class="line"><span class="w">    </span><span class="p">}</span>
+</span><span class="line"><span class="w">  </span><span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Please refer
+<a href="https://mandrillapp.com/api/docs/messages.JSON.html">Messages API  Mandrill</a>
+about the data structure.</p>
+
+<p>Above is a minimum example.</p>
+
+<p>For <code>from_email</code> you can use any address if the address is valid shape
+like <code>~@XXX.YYY</code>.</p>
+
+<p>You can set more than one receiver in <code>to</code>,
+as you can see it is an array.</p>
+
+<p>Mandrill accepts html format by <code>html</code> key.
+If you want to send flat text, use <code>text</code> key.</p>
+
+<p>Then, include above script in such <code>head</code> of html.
+Don’t forget to include jQuery, too.</p>
+
+<figure class="code"><figcaption><span>index.html</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./utils.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Now it is ready.
+You can call the function <code>sendMail</code> as you like.</p>
+
+<p>For example using button:</p>
+
+<figure class="code"><figcaption><span>index.html</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;mail&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Click!&quot;</span> <span class="na">onClick</span><span class="o">=</span><span class="s">&quot;sendMail()&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>That is all.</p>
+
+<p>These emails are also managed in Mandrill and you can see in your account page.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Speed up Octopress generate for a check build]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/12/11/blog-octopress/"/>
+    <updated>2014-12-11T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/12/11/blog-octopress</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B0863R7NPW/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I//81xurWVvLJL._SS200_.png" alt="Mandrill" /></a></div>
+
+<p>Once you became to have a lot of posts, Octopress’ <code>rake generate</code>
+command could take a long time.</p>
+
+<p>When you want to check your site, normally it is needed to build only your new post.
+While Octopress has tasks of <code>isolate</code>/<code>integrate</code> to achieve such usage,
+it needs some manual commands, and there is a risk to push your site with only a new post.</p>
+
+<p>In this post, I will introduce how to speed up <code>rake generate</code>
+with an easy command, and in safety.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#isolateintegrate-update" id="markdown-toc-isolateintegrate-update">isolate/integrate update</a></li>
+  <li><a href="#generate_only-command" id="markdown-toc-generate_only-command">generate_only command</a></li>
+  <li><a href="#assure-full-build" id="markdown-toc-assure-full-build">Assure full build</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="isolateintegrate-update">isolate/integrate update</h1>
+
+<p><code>rake isolate[my-post]</code> command stashes all posts other than <code>my-post</code>
+from <strong>source/_post</strong> directory.
+They are stashed in <strong>source/_stash</strong>, which are not used for a build,
+so that Jekyll command builds only <code>my-post</code>.</p>
+
+<p>After checking your site, you can revert them by <code>rake integrate</code>.</p>
+
+<p>But there are some difficulties:</p>
+
+<ul>
+  <li>You need some commands to build one time for a check.
+    <ul>
+      <li>In addition, you need to give a name of a post.</li>
+    </ul>
+  </li>
+  <li>You may <code>deploy</code> your site only with a new post.</li>
+  <li><code>isolate</code> command doesn’t move a directory in <strong>_post</strong> directory.
+    <ul>
+      <li>I put my old posts in such <strong>source/_post/y_2014</strong>, because Octopress (Jekyll)
+  manages these posts under subdirectories as same as posts under <strong>source/_post</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>Pages</strong> are not stashed.</li>
+</ul>
+
+<p>To solve them, I modified <strong>Rakefile</strong> as below for <code>isolate</code>/<code>integrate</code> tasks:</p>
+
+<figure class="code"><figcaption><span>Rakefile</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="w"> </span><span class="c1">## -- Misc Configs -- ##</span>
+</span><span class="line"><span class="n">stash_dir</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;_stash&quot;</span><span class="w">    </span><span class="c1"># directory to stash posts for speedy generation</span>
+</span><span class="line"><span class="n">full_stash_dir</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">stash_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span><span class="c1"># full path for stash dir</span>
+</span><span class="line"><span class="n">stash_root_dir</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;_stash_root&quot;</span><span class="w"> </span><span class="c1"># directory to stash pages (in /source/)</span>
+</span><span class="line"><span class="n">full_stash_root_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">stash_root_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># full path for stash_root dir</span>
+</span><span class="line"><span class="n">root_stashes</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;Your-Page&#39;</span><span class="o">]</span><span class="w"> </span><span class="c1"># directories to be stashed in /source/</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="c1"># usage rake isolate[my-post]</span>
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly.&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:isolate</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">filename</span>
+</span><span class="line"><span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">filename</span>
+</span><span class="line"><span class="w">  </span><span class="k">else</span>
+</span><span class="line"><span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/*.</span><span class="si">#{</span><span class="n">new_post_ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_by</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">mtime</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span><span class="o">.</span><span class="n">last</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kp">nil</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;There is no markdown file (*.</span><span class="si">#{</span><span class="n">new_post_ext</span><span class="si">}</span><span class="s2">) in </span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">.&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="mi">1</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Stashing other posts than </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">full_stash_dir</span><span class="p">)</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">full_stash_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">post</span><span class="o">|</span>
+</span><span class="line"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">post</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="w">      </span><span class="nb">p</span><span class="w"> </span><span class="s2">&quot;Remaining </span><span class="si">#{</span><span class="n">post</span><span class="si">}</span><span class="s2">...&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="k">else</span>
+</span><span class="line"><span class="w">      </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="w"> </span><span class="n">post</span><span class="p">,</span><span class="w"> </span><span class="n">full_stash_dir</span>
+</span><span class="line"><span class="w">    </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">full_stash_root_dir</span><span class="p">)</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">full_stash_root_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">defined?</span><span class="w"> </span><span class="n">root_stashes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kp">nil</span>
+</span><span class="line"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">root_stashes</span><span class="o">.</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">String</span>
+</span><span class="line"><span class="w">      </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">root_stashes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">full_stash_root_dir</span>
+</span><span class="line"><span class="w">    </span><span class="k">elsif</span><span class="w"> </span><span class="n">root_stashes</span><span class="o">.</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Array</span>
+</span><span class="line"><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">root_stashes</span><span class="w"> </span><span class="k">do</span>
+</span><span class="line"><span class="w">        </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">full_stash_root_dir</span>
+</span><span class="line"><span class="w">      </span><span class="k">end</span>
+</span><span class="line"><span class="w">    </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;touch .isolated&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Move all stashed posts back into the posts directory, ready for site generation.&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:integrate</span><span class="w"> </span><span class="k">do</span>
+</span><span class="line"><span class="w">  </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="w"> </span><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">full_stash_dir</span><span class="si">}</span><span class="s2">/*&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="w"> </span><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">full_stash_root_dir</span><span class="si">}</span><span class="s2">/*&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;rm -f .isolated&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;touch .integrated&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>First, new variables <code>full_stash_dir</code>, <code>stash_root_dir</code>, <code>full_stash_root_dir</code>
+and <code>root_stashes</code> are added.</p>
+
+<p><code>full_stash_dir</code> is introduced because in Octopress’ <strong>Rakefile</strong>
+overwrites <code>stash_dir</code> values in <code>isolate</code> task,
+so that it will fail if we use <code>isolate</code> and <code>integrate</code> in a sequence.</p>
+
+<p>With above modifications of <code>isolate</code>/<code>integrate</code>, it is actually not needed,
+but use them just for making paths clear.</p>
+
+<p><code>stash_root_dir</code> is used for pages instead of posts.
+ (Pages are normally in a root directory (<strong>source/</strong>).)</p>
+
+<p><code>full_stash_root_dir</code> is full path name for <code>stash_root_dir</code>.</p>
+
+<p>And <code>root_stashes</code> are what you want to stash in <code>isolate</code> task.
+Above setting will move <strong>source/Your-Page</strong> in <strong>source/_stash_root</strong>
+in <code>isolate</code> task.
+You can give multiple pages as an array.</p>
+
+<p>Next, <code>isolate</code> task is now able to select the last modified post automatically
+if you don’t give a post name.
+The posts are sorted by <code>mtime</code> (modified time) and the last one is used.</p>
+
+<p><code>mv</code> command loop was modified to move all files/directories in <strong>source/_post</strong> directory.
+In addition, it moves pages listed in <code>root_stashes</code> in <strong>source/</strong>.</p>
+
+<p>In the last of <code>isolate</code> task, it makes <strong>.isolated</strong> file
+in Octopress’ top directory.
+It is used in <code>deploy</code> command to check if files are isolated or not.
+(see below).</p>
+
+<p><code>integrated</code> task now moves files/directories in <strong>full_stash_root_dir</strong>, too.
+In addition, it deletes <strong>.isolated</strong>, and makes <strong>.integrated</strong>.
+It is used in <code>deploy</code> command, too.</p>
+
+<h1 id="generate_only-command">generate_only command</h1>
+
+<p>Then, make a task which build only one post automatically.</p>
+
+<figure class="code"><figcaption><span>Rakefile</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># usage rake generate_only[my-post]</span>
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Generate only specified post (much faster)&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:generate_only</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="nb">trap</span><span class="p">(</span><span class="ss">:INT</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+</span><span class="line"><span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;Stopped by SIGINT&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="k">begin</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:isolate</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Generating Site with Jekyll&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="n">ok_failed_raise</span><span class="p">(</span><span class="nb">system</span><span class="p">(</span><span class="s2">&quot;compass compile --css-dir </span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/stylesheets&quot;</span><span class="p">),</span><span class="w"> </span><span class="kp">false</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="n">ok_failed_raise</span><span class="p">(</span><span class="nb">system</span><span class="p">(</span><span class="s2">&quot;jekyll build --unpublished&quot;</span><span class="p">),</span><span class="w"> </span><span class="kp">false</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Restoring stashed posts/pages&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:integrate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">  </span><span class="k">rescue</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:integrate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="vg">$!</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Same as generate_only&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:gen_only</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate_only</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Same as generate_only&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:go</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate_only</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Here, <code>rake generate_only</code> task executes <code>isolate</code>, <code>generate</code> (<code>compass</code>/<code>jekyll</code>)
+and <code>integrate</code>.</p>
+
+<p><code>gen_only</code> and <code>go</code> are aliases for <code>generate_only</code>.</p>
+
+<p>Now you can generate only your new post with</p>
+
+<pre><code>$ rake generate_only["my-latest-post"]
+</code></pre>
+
+<p>or</p>
+
+<pre><code>$ rake generate_only
+</code></pre>
+
+<p>for the last modified post.
+You can even use:</p>
+
+<pre><code>$ rake go
+</code></pre>
+
+<p>as same as <code>rake generate_only</code>.</p>
+
+<p>Similar settings can be used for <code>watch</code> and <code>preview</code>:</p>
+
+<figure class="code"><figcaption><span>Rakefile</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># usage rake watch_only[my-post]</span>
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;watch only specified post&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:watch_only</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:isolate</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="k">begin</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:watch</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">  </span><span class="k">rescue</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Restoring stashed posts/pages&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:integrate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># usage rake preview_only[my-post]</span>
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;preview only specified post&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:preview_only</span><span class="p">,</span><span class="w"> </span><span class="ss">:filename</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">|</span>
+</span><span class="line"><span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:isolate</span><span class="o">].</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="k">begin</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:preview</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">  </span><span class="k">rescue</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Restoring stashed posts/pages&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:integrate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h1 id="assure-full-build">Assure full build</h1>
+
+<p>In <code>deploy</code> task,
+it should assure that you built with all files w/o stashed files.</p>
+
+<p>In Octopress’ <strong>Rakefile</strong>, there is a similar method
+using <strong>.preview-mode</strong> file, which is made in <code>preview</code> or <code>watch</code> tasks
+<sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup></p>
+
+<p>In below, <code>deploy</code> task checks <code>.integrated</code> or <code>.isolated</code> files,
+and re-generates after <code>integrate</code> if there is one of these files.</p>
+
+<p>In addition, <code>generate</code> task deletes <code>.integrated</code> (and <code>.preview-mode</code>)
+as full files build are done at that point.</p>
+
+<figure class="code"><figcaption><span>Rakefile</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Generate jekyll site&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:generate</span><span class="w"> </span><span class="k">do</span>
+</span><span class="line"><span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class="line"><span class="w">  </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:check</span><span class="o">].</span><span class="n">invoke</span><span class="p">()</span>
+</span><span class="line"><span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Generating Site with Jekyll&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;compass compile --css-dir </span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/stylesheets&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;jekyll build&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;rm -f .integrated&quot;</span>
+</span><span class="line"><span class="w">  </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;rm -f .preview-mode&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">desc</span><span class="w"> </span><span class="s2">&quot;Default deploy task&quot;</span>
+</span><span class="line"><span class="n">task</span><span class="w"> </span><span class="ss">:deploy</span><span class="w"> </span><span class="k">do</span>
+</span><span class="line"><span class="w">  </span><span class="c1"># Check if preview posts exist, which should not be published</span>
+</span><span class="line"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="s2">&quot;.integrated&quot;</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="s2">&quot;.isolated&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Found isolated history, regenerating files ...&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="nb">system</span><span class="w"> </span><span class="s2">&quot;rm -f .integrated .isolated&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:integrate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;## Found posts in preview mode, regenerating files ...&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="no">File</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;.preview-mode&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="w">    </span><span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:generate</span><span class="o">].</span><span class="n">execute</span>
+</span><span class="line"><span class="w">  </span><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="w">  </span><span class="o">...</span>
+</span><span class="line">
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, you can safely use <code>rake generate_only</code> command.</p>
+
+<p>These modifications can be seen in Octogray theme:</p>
+
+<div class="github-widget" data-repo="rcmdnk/octogray"></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[New blog with Octopress + Octogray, in GitHub Pages]]></title>
+    <link href="https://rcmdnk.com/en/blog/2014/11/12/blog-octopress/"/>
+    <updated>2014-11-12T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2014/11/12/blog-octopress</id>
+    <content type="html"><![CDATA[<p>This is my new blog with
+<a href="https://github.com/imathis/octopress">Octopress</a>
+and
+a theme of
+<a href="https://github.com/rcmdnk/octogray">Octogray</a>.</p>
+
+<p>The site is published in <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+
+<p>In this first post, I would introduce how to make the site
+with Octopress + Octogray + GitHub Pages.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#install-ruby" id="markdown-toc-install-ruby">Install Ruby</a>    <ul>
+      <li><a href="#mac-user" id="markdown-toc-mac-user">Mac user</a></li>
+      <li><a href="#windows-user" id="markdown-toc-windows-user">Windows user</a></li>
+    </ul>
+  </li>
+  <li><a href="#prepare-repository" id="markdown-toc-prepare-repository">Prepare Repository</a></li>
+  <li><a href="#install-octopress-and-apply-the-theme" id="markdown-toc-install-octopress-and-apply-the-theme">Install Octopress and apply the theme</a></li>
+  <li><a href="#setup-_configyml" id="markdown-toc-setup-_configyml">Setup _config.yml</a></li>
+  <li><a href="#make-post-and-generate-the-site-deploy" id="markdown-toc-make-post-and-generate-the-site-deploy">Make post and generate the site, deploy</a></li>
+  <li><a href="#manage-source-in-bitbucket" id="markdown-toc-manage-source-in-bitbucket">Manage source in Bitbucket</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="install-ruby">Install Ruby</h1>
+
+<h2 id="mac-user">Mac user</h2>
+
+<p>For the recent OS X users, Ruby 2.0 or later is already installed
+and normally you should not install ruby.</p>
+
+<p>In case of necessity, you can install by <a href="https://rvm.io/">RVM</a>, like:</p>
+
+<pre><code>$ \curl -sSL https://get.rvm.io | bash -s stable --ruby=2.0.0
+</code></pre>
+
+<p>It setup your environmental variable, too.</p>
+
+<p>But for the next session, you need to add the following lines
+in your <strong>.bashrc</strong> (or your login script) to setup the ruby environment:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span><span class="nv">$HOME</span>/.rvm/scripts/rvm<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="k">then</span>
+</span><span class="line"><span class="w">  </span><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/.rvm/scripts/rvm
+</span><span class="line"><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="windows-user">Windows user</h2>
+
+<p>For Windows user, the easiest way is to use <a href="http://www.cygwin.com/">Cygwin</a>.
+At setup, you need at least:</p>
+
+<ul>
+  <li>Devel: git</li>
+  <li>Ruby: All</li>
+</ul>
+
+<p>There are also several alternatives to use Ruby on Windows:</p>
+
+<ul>
+  <li><a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>: Command prompt with Ruby.</li>
+  <li><a href="https://github.com/scottmuc/yari">scottmuc/yari</a>: Yet Another Ruby Installe,
+inspired by RVM<sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup>.</li>
+  <li><a href="http://www.mingw.org/">MinGW</a>: A contraction of “Minimalist GNU for Windows.</li>
+  <li><a href="https://github.com/bmatzelle/gow/wiki">Gow</a>: Gnu On Windows: the lightweight alternative to Cygwin.</li>
+</ul>
+
+<h1 id="prepare-repository">Prepare Repository</h1>
+
+<p>First, you need a repository in <a href="https://github.com">GitHub</a>
+for GitHub Pages.</p>
+
+<p>You can use either <strong>User site</strong> or <strong>Project site</strong>.</p>
+
+<p><strong>User site</strong> is based on <strong>master</strong> branch of <strong>user.github.io</strong> repository
+in your GitHub repositories (<strong>user</strong> must be your user account).</p>
+
+<p>On the other hand, <strong>Project site</strong> is based on <strong>gh-pages</strong> branch
+of any of your repositories in GitHub.</p>
+
+<p>I have <a href="https://rcmdnk.com/">another Japanese blog</a> at <strong>User site</strong>,
+therefore this is <strong>Project site</strong> in
+<a href="https://github.com/rcmdnk/en">en</a> repository.</p>
+
+<p>You can make repository from
+<a href="https://github.com/new">GitHub website</a>, or from command line:</p>
+
+<pre><code>$ repo=&lt;"user.github.io" or "what you want"&gt;
+$ user=&lt;username&gt;
+$ read -s # Enter your password
+$ twofac=XXXXXX # if necessary, otherwise remove following '-H "...twofac"' section.
+$ curl -u ${user}:${pass} -H "X-GitHub-OTP: $twofac" https://api.github.com/user/repos -d "{\"name\":\"$repo\"}"
+</code></pre>
+
+<h1 id="install-octopress-and-apply-the-theme">Install Octopress and apply the theme</h1>
+
+<p>In the below, I make <strong>octopress_en</strong> directory as a root directory of Octopress,
+and use <strong>en</strong> repository as a project repository for GitHub Pages.</p>
+
+<div class="github-widget" data-repo="images/octopress"></div>
+
+<p>First, clone octopress to where what you want to install.</p>
+
+<pre><code>$ cd /path/to/install/dir
+$ git clone git://github.com/imathis/octopress.git octopress_en
+$ cd octopress_en
+</code></pre>
+
+<p>For <strong>User site</strong>, Octopress makes <strong>source</strong> branch automatically,
+while it doesn’t for <strong>Project site</strong>.</p>
+
+<p>I would like to keep <strong>master</strong> branch to following up Octopress updates,
+then made <strong>source</strong> branch as a working branch.
+It is not necessary for <strong>User site</strong> case.</p>
+
+<pre><code>$ git checkout -b source
+</code></pre>
+
+<p>Next, a theme: <a href="https://github.com/rcmdnk/octogray">Octogray</a>, is installed.</p>
+
+<div class="github-widget" data-repo="rcmdnk/octogray"></div>
+
+<p>And setup with it.</p>
+
+<pre><code>$ git submodule add git@github.com:rcmdnk/octogray.git .themes/octogray
+$ .themes/octogray/setup.sh -y
+$ rake setup_github_pages["git@github.com:rcmdnk/en"]
+Do you want to use 'md' extension instead of 'markdown'? [y/n]: y
+Do you want to push_ex (renew remote repository evry time)? [y/n]: y
+Enter where you want to put _deploy (current: /path/to/install/dir/): ~/tmp/octopress/en
+rm -rf ~/tmp/octopress/en/public/en
+## Site's root directory is now '/en' ##
+</code></pre>
+
+<p>Octogray’s setup.sh executes such <code>bundle install</code>, <code>rake install['octogray']</code>,
+which are nominal setup commands for Octopress,
+so that everything is ready after setup.</p>
+
+<p>After setup, the repository is set.</p>
+
+<p>In addition, Octogray can set the suffix of the post made by <code>new_post</code>
+command as <code>md</code> instead of <code>markdown</code>.</p>
+
+<p>It also has a function of <code>push_ex</code>, in which <code>deploy_dir</code> is always temporary,
+and it pushes <strong>clean history</strong> to the repository,
+i.e., makes empty repository and commits only the last update,
+and forces pushing.
+This is useful or even necessary when you did any critical mistake
+(gave password or critical word in the post, and pushed),
+or did ashamed mistake which you want to hide permanently<img alt="sweat_smile" src="https://rcmdnk.com/en/images/emoji/unicode/1f605.png" class="emoji" /></p>
+
+<h1 id="setup-_configyml">Setup _config.yml</h1>
+
+<p>Although some variables are automatically updated by <code>setup_github_pages</code>,
+you may want to set something more in <strong>_config.yml</strong>, so do as you like.</p>
+
+<p>Here are some notes for <strong>Project site</strong> case, w/o custom domain
+<sup id="fninref:2"><a href="#fnin:2" rel="footnote">2</a></sup>.</p>
+
+<p>If you don’t set custom domain, the site root URL becomes like:
+https://rcmdnk.github.io/en.</p>
+
+<p>Then, if you use absolute path w/o a domain, it becomes
+https://rcmdnk.github.io/
+instead of https://rcmdnk.github.io/en.</p>
+
+<p>But Octopress(Jekyll) does more complex things:
+it complements <code>root</code> in <strong>_config.yml</strong> before such absolute pathes in some places.</p>
+
+<p>This expansion is done by <code>plugins/octopress_filters.rb: expand_urls</code>,
+in <strong>source/_layouts/default.html</strong>.</p>
+
+<p>As you can see in <strong>default.html</strong>, it is not applied to such
+<strong>haad.html</strong>, <strong>header.html</strong> or <strong>footer.html</strong>.</p>
+
+<p>When you edit paths, be careful about above, and set correct path.</p>
+
+<p>For example, in Octogray’s theme, if you want to use
+images in <strong>source/images/</strong> of <strong>en</strong> repository:</p>
+
+<ul>
+  <li>favicon: in <strong>head.html</strong>: need to be <strong>/en/images/…</strong></li>
+  <li>titlelogo: in <strong>custom/header.html</strong>: need to be <strong>/en/images/…</strong></li>
+  <li>aboutme_logo: in <strong>custom/asides/about.html</strong>: need to be <strong>/images/…</strong></li>
+</ul>
+
+<p>Another problem is custom 404 page.
+You can make your own 404 page by making 404.md (or 404.html) in <strong>/source/</strong>
+<sup id="fninref:3"><a href="#fnin:3" rel="footnote">3</a></sup></p>
+
+<p>But it redirects to the top directory, therefore
+404 page in <strong>Project site</strong> isn’t effectual.</p>
+
+<p>GitHub pages doesn’t support such <strong>.htaccess</strong> configuration
+<sup id="fninref:4"><a href="#fnin:4" rel="footnote">4</a></sup>,
+therefore there is no way to assign special 404 page for <strong>Project site</strong>
+w/o custom domain.</p>
+
+<p>Even if you go <a href="https://rcmdnk.github.io/en/wrong">the wrong URL</a>
+under https://rcmdnk.github.io/en/,
+it redirects to 404 page under https://rcmdnk.github.io/.</p>
+
+<p>So, you need to prepare proper 404 page in <strong>User site</strong>.</p>
+
+<h1 id="make-post-and-generate-the-site-deploy">Make post and generate the site, deploy</h1>
+
+<p>Now it becomes ready, then make a test page:</p>
+
+<pre><code>$ rake new_post['test']
+</code></pre>
+
+<p>then edit <strong>source/_posts/20XX-XX-XX-test.md</strong>,
+or</p>
+
+<pre><code>$ post=$(rake new_post["test"]|grep "Creating new post"|cut -d: -f2)
+$ sedi 's/published: *false/published: true/' $post
+$ sedi 's/categories:/categories: cat/' $post
+$ sedi 's/tags:/tags: tag/' $post
+$ sedi "s/&lt;\!-- *more *--&gt;/This is test post."\\$'\n'"&lt;\!-- more --&gt;/" $post
+$ sedi "s/{%include after_excerpt.html%}/{%include after_excerpt.html%}"\\$'\n'"# Test Sectiontest"\\$'\n'"test test./" $post
+</code></pre>
+
+<p>If it is ready, generate the site:</p>
+
+<pre><code>$ rake gen
+</code></pre>
+
+<p><code>gen</code> is a shortened command of <code>generate</code>, introduced by Octogray.
+(Try <code>rake -T</code> to see all commands.)</p>
+
+<p>Now you have a public directory in <strong>~/tmp/octopress/en</strong>.
+The directories in it is like: <strong>~/tmp/octopress/en/public/en/</strong>.</p>
+
+<p>To check it, execute <code>rake preview</code> and open <a href="http://localhost:4000/">http://localhost:4000/</a>
+from the browser.</p>
+
+<p>On Mac, you can use <a href="http://pow.cx/">Pow</a>.
+To see above page from pow, link like:</p>
+
+<pre><code>$ cd ~/.pow &amp;&amp; ln -s ~/tmp/octopress/en ./octopress_en
+</code></pre>
+
+<p>and open http://octopress_en.dev/en/.</p>
+
+<p>If it is ok and you want to publish, deploy the site:</p>
+
+<pre><code>$ rake deploy
+</code></pre>
+
+<p>Now you should see the page like: <a href="https://rcmdnk.com/en/">https://rcmdnk.com/en/</a>
+(It could take ~10min after deploying).</p>
+
+<h1 id="manage-source-in-bitbucket">Manage source in Bitbucket</h1>
+
+<p>The site is published then they should be in the public repository,
+but you may want to hide sources before generating site, which could include drafts.</p>
+
+<p>While GitHub provide only public repository for the free usage,
+<a href="https://bitbucket.org/">Bitbucket</a> provides it in free.</p>
+
+<p>So, I put the sources to Bitbucket.</p>
+
+<p>To make it, make Bitbucket account and make a repository
+in which sources will be stored (here, account is <strong>rcmdnk</strong>, and repository is <strong>octopress_en</strong>).
+Then, set remote site:</p>
+
+<pre><code>$ git remote add bitbucket git@bitbucket.org:rcmdnk/octopress_en
+$ git push -u bitbucket source
+</code></pre>
+
+<p>Now <strong>source</strong> branch is connected to <strong>bitbucket/source</strong>.</p>
+
+<p>You can store your sources whenever you want like:</p>
+
+<pre><code>$ git add -A
+$ git commit -m "comment"
+$ git push
+</code></pre>
+
+<blockquote>
+  <p>Ref in Japanese: <a href="https://rcmdnk.com/blog/2013/03/07/setup-octopress/">GitHub pages + Octopressの導入</a></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>
