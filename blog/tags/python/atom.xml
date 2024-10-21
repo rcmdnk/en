@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Python | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/python/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2024-10-21T00:07:30+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="https://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Can't ignore unknown argument in subparser of ArgumentParser of Python even if parse_known_args is given]]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/03/08/computer-python/"/>
+    <updated>2015-03-08T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/03/08/computer-python</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/B00M9P7JKI/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/61-3bJwurUL._SS200_.jpg" alt="An Illustrated Book of Bad Arguments " /></a></div>
+
+<p>There was a messy point in my Python script: <a href="https://github.com/rcmdnk/homebrew-file">Brew-file</a>,
+related with ArgumentParser.</p>
+
+<p>In this post, the problem and how I addressed are written.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#parse_known_args-in-argumentparser" id="markdown-toc-parse_known_args-in-argumentparser">parse_known_args in ArgumentParser</a></li>
+  <li><a href="#argumentparsers-subparsers" id="markdown-toc-argumentparsers-subparsers">ArgumentParser’s subparsers</a></li>
+  <li><a href="#fix-at-brew-file" id="markdown-toc-fix-at-brew-file">Fix at Brew-file</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="parse_known_args-in-argumentparser">parse_known_args in ArgumentParser</h1>
+
+<p>ArguentParser is a module to analyze arguments, like this:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">argparse</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;--aaa&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;aaa&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">ns</span>
+</span><span class="line"><span class="n">Namespace</span><span class="p">(</span><span class="n">aaa</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In the script, if it is called without argument,
+it returns the arguments to the script in the form of Namespace object.</p>
+
+<p>If other values than what are defined by <code>add_argument</code>,
+it gives an error:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;-b&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="n">usage</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span> <span class="n">AAA</span><span class="p">]</span>
+</span><span class="line"><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="n">arguments</span><span class="p">:</span> <span class="o">-</span><span class="n">b</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>If you want to give such file names,
+and want to use variadic arguments,
+use <code>parse_known_args</code> instead of <code>parse_args</code>.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">([</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;-b&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="n">Namespace</span><span class="p">(</span><span class="n">aaa</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">args</span>
+</span><span class="line"><span class="p">[</span><span class="s1">&#39;-b&#39;</span><span class="p">]</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><code>parse_known_args</code> returns the analyzed results
+and remaining arguments as an array.</p>
+
+<h1 id="argumentparsers-subparsers">ArgumentParser’s subparsers</h1>
+
+<p>ArgumentParser has a function of <code>subparsers</code>.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">argparse</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;--aaa&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;aaa&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">()</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">subparser0</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;bbb&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">subparser0</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--ccc&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;ccc&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;subparsertest&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">ns</span>
+</span><span class="line"><span class="n">Namespace</span><span class="p">(</span><span class="n">aaa</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ccc</span><span class="o">=</span><span class="s1">&#39;subparsertest&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Like this, if it finds <code>subperser</code>, it starts child parsing for <code>bbb</code>.</p>
+
+<p>Here, in Python 2.7.7 and later,
+if unknown arguments are given,
+<code>parse_known_args</code> can analyze as above.</p>
+
+<p>But for Python 2.7.6 and earlier, it shows an error:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">([</span><span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;subparsertest&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="n">usage</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span> <span class="n">AAA</span><span class="p">]</span> <span class="p">{</span><span class="n">bbb</span><span class="p">}</span> <span class="o">...</span>
+</span><span class="line"><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="n">arguments</span><span class="p">:</span> <span class="n">X</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The problem is that OS X Yosemite’s default Python is 2.7.6.
+And Brew-file’s <code>brew</code> command uses this function.</p>
+
+<p>Therefore, if you want to use <code>brew file brew</code> command,
+you need to install Python 2.7.7 or later, or Python 3.X.</p>
+
+<h1 id="fix-at-brew-file">Fix at Brew-file</h1>
+
+<p>Actually, it affects only on <code>brew</code> command in <a href="https://github.com/rcmdnk/homebrew-file">Brew-file</a>.
+Therefore, I ignore it for now in Brew-file.
+(It will give an error if you use <code>brew</code> command with Python 2.7.6.)</p>
+
+<p>In addition, <strong>/etc/brew-wrap</strong> wraps default <code>brew</code> command.
+For such <code>brew install</code> command, it wraps as <code>brew file brew install ...</code>.</p>
+
+<p>It should not be used with Python 2.7.6,
+therefore the wrapper function was modified for that
+it wraps only when newer Python is available.</p>
+
+<blockquote>
+  <p><a href="https://github.com/rcmdnk/homebrew-file/commit/64693b2dc587a1d7f8710f01e79f93604ea3cbf2">updated brew-wrap: avoid to use wrap for python 2.7.6 (OSX default) or … · 64693b2 · rcmdnk/homebrew-file</a></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>

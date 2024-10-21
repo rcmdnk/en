@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Linux | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/linux/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2024-10-21T00:07:30+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="https://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Prevent to disconnect a ssh connection by 'Connection reset by peer']]></title>
+    <link href="https://rcmdnk.com/en/blog/2015/01/18/computer-linux-putty/"/>
+    <updated>2015-01-18T12:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2015/01/18/computer-linux-putty</id>
+    <content type="html"><![CDATA[<div class="amazon-img"><a href="http://www.amazon.com/o/ASIN/0596008953/rcmdnksblog-20/" rel="nofollow" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51k8tk6WpfL._SS200_.jpg" alt="SSH, The Secure Shell: The Definitive Guide" /></a></div>
+
+<p>When I was working with ssh,
+sometime a ssh connection was broken with a message:</p>
+
+<pre><code>Read from remote host example.com: Connection reset by peer
+Connection to example.com closed.
+</code></pre>
+
+<p>This is because that a connection is cut by a router
+if there is no action for a while.</p>
+
+<p>To prevent such a situation,
+there are several ways like below.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#how-to-keep-a-connection" id="markdown-toc-how-to-keep-a-connection">How to keep a connection</a></li>
+  <li><a href="#solve-at-a-server-side" id="markdown-toc-solve-at-a-server-side">Solve at a server side</a></li>
+  <li><a href="#solve-at-a-client-side" id="markdown-toc-solve-at-a-client-side">Solve at a client side</a></li>
+  <li><a href="#work-at-putty" id="markdown-toc-work-at-putty">Work at Putty</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="how-to-keep-a-connection">How to keep a connection</h1>
+
+<p>In principle, it is cut because there is no action.
+Therefore, if either a server or a client sends something,
+the connection can be kept.</p>
+
+<p>Of course it could be solved if you can change the router’s settings
+not to cut even in such a situation.
+But sometime router’s can’t be touched by you.</p>
+
+<p>In such cases, you can use ssh’s function.</p>
+
+<h1 id="solve-at-a-server-side">Solve at a server side</h1>
+
+<p>If you are an administrator of a server,
+following settings in <strong>/etc/ssh/sshd_config</strong> works:</p>
+
+<pre><code>ClientAliveInterval 60
+ClientAliveCountMax 3
+</code></pre>
+
+<p>Add these lines in the file (or edit corresponding lines)
+and restart <code>sshd</code>:</p>
+
+<pre><code>$ sudo /etc/init.d/sshd restart
+</code></pre>
+
+<p><code>ClientAliveInterval</code> sets an interval to send a message to the connected client
+to confirm the connection (in second).
+The default is 0, and it doesn’t send a message.</p>
+
+<p><code>ClientAliveCountMax</code> is a number of repeats to try to send a message when
+it fails with a timeout.
+The default value is 3.</p>
+
+<p>Above settings try to send a message 3 times with an interval of 60 seconds
+(i.e. try for 180sec).</p>
+
+<p><code>ClientAliveInterval</code> must be shorter than what the setting of the router’s cut timing.</p>
+
+<h1 id="solve-at-a-client-side">Solve at a client side</h1>
+
+<p>If you can edit the server,
+you can use a client side setting.</p>
+
+<p><code>ssh</code> has a function to send a message from a client side, too.</p>
+
+<p>To use it, add following lines in your <strong>~/.ssh/config</strong>:</p>
+
+<pre><code>ServerAliveInterval 60
+ServerAliveCountMax 3
+</code></pre>
+
+<p>Here, names have <strong>ServerAlive</strong>, as they are for confirming
+if a server is alive or not.
+(and a server side settings are named as <strong>ClientAlive</strong>, to check a client.)</p>
+
+<p>This is similar to the server side function.</p>
+
+<p><code>ServerAliveInterval</code> sets an interval to send a message (the default is 0, not to send),
+and <code>ServerAliveCountMax</code> sets a maximum number of trials (the default is 3).</p>
+
+<p>With these settings,
+you can prevent such a disconnection for any servers.</p>
+
+<h1 id="work-at-putty">Work at Putty</h1>
+
+<p>If you are working with Putty in Windows,
+you can use Putty’s function.</p>
+
+<p>It has a function to send a harmless packet to keep a connection,
+called <strong>Hertbeat</strong> function.</p>
+
+<p>In <strong>Connection</strong> of the setting window,
+you can find <strong>Sending of null packets to keep session active</strong>.
+There is a setting <strong>Seconds between keepalive (0 to turn off)</strong>.</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20150118_putty.jpg" alt="putty" class="pic" /></p>
+
+<p><code>0</code> doesn’t send a packet.
+If you set it as <code>60</code>, it works similar to above <code>ServerAliveInterval</code>,
+sending a packet periodically.</p>
+
+<p>TereTerm also has a similar function.</p>
+
+<p>Ref:</p>
+
+<blockquote>
+  <p><a href="https://docs.oseems.com/general/application/ssh/disable-timeout">How to disable SSH timeout</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="http://www.geocities.co.jp/AnimeComic/1098/documents/unixmemo/ssh-keepalive.html">keep-alive for ssh</a></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>

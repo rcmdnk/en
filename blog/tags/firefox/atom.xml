@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Firefox | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/firefox/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2024-10-21T00:07:30+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="https://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Vimperator @ Firefox 47]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/06/08/computer-firefox-vimperator/"/>
+    <updated>2016-06-08T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/06/08/computer-firefox-vimperator</id>
+    <content type="html"><![CDATA[<p>Yesterday, Mozilla released Firefox 47.</p>
+
+<p>Unfortunately, current version of <a href="https://rcmdnk.com/en/blog/tags/vimperator/">Vimperator</a>
+doesn’t work with Firefox 47.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#firefox-47" id="markdown-toc-firefox-47">Firefox 47</a></li>
+  <li><a href="#vimperator--firefox-47" id="markdown-toc-vimperator--firefox-47">Vimperator @ Firefox 47</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="firefox-47">Firefox 47</h1>
+
+<p>Firefox 47 has several updates for Videos,
+such embedded YouTube videos can be played with HTML5 video
+if Flash is not installed.</p>
+
+<p>Another update is for the synchronization, that
+you can view/search open tabs from other machines.</p>
+
+<blockquote>
+  <p><a href="https://www.mozilla.org/en-US/firefox/47.0/releasenotes/">Firefox — Notes (47.0) — Mozilla</a></p>
+</blockquote>
+
+<p>In addition, there are some changes related to addons,
+and there seems some addons don’t have compatibility.</p>
+
+<blockquote>
+  <p><a href="https://blog.mozilla.org/addons/2016/04/07/compatibility-for-firefox-47/">Add-on Compatibility for Firefox 47  Mozilla Add-ons Blog</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/en/Firefox/Releases/47">Firefox 47 for developers - Mozilla  MDN</a></p>
+</blockquote>
+
+<h1 id="vimperator--firefox-47">Vimperator @ Firefox 47</h1>
+
+<p>When I started Firefox 47,
+configurations of views in <strong>.vimperatorrc</strong> were not reflected.</p>
+
+<p>I could use such <code>o</code> command and open a site,
+but there was no complement, and it showed <code>Application is not defined</code>.</p>
+
+<p>This is because Vimperator depends on
+<del>FUEL: https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Toolkit_API/FUEL</del> library,
+which was removed at Firefox 47.</p>
+
+<p>Developers of Vimperator build new version for Firefox 47,
+and released new version in GitHub just a short while ago.</p>
+
+<blockquote>
+  <p><a href="https://github.com/vimperator/vimperator-labs/releases/tag/vimperator-3.14.0">Release Vimperator 3.14.0 · vimperator/vimperator-labs</a></p>
+</blockquote>
+
+<p>To install it, first you need to disable a signature check.
+Open <a href="about:config">about:config</a>
+and search
+<code>xpinstall.signatures.required</code>,
+then make the value to <code>false</code>.</p>
+
+<p>Then, download
+<a href="https://github.com/vimperator/vimperator-labs/releases/download/vimperator-3.14.0/vimperator-3.14.0.xpi">vimperator-3.14.0.xpi</a>,
+drop it to Firefox.</p>
+
+<p>If you try to click the xpi link directly,
+Firefox rejects to install from these sites directly,
+so that you need to download first.</p>
+
+<p>It seems it takes a time to release it in
+<del>Firefox’s Add-ons page: https://addons.mozilla.org/en/firefox/addon/vimperator/</del>,
+therefore you need to install GitHub version if you need Vimperator with Firefox 47.</p>
+
+<p>On the other hand, this <code>xpinstall.signatures.required</code> option will be
+removed at Firefox 48.</p>
+
+<blockquote>
+  <p><a href="https://blog.mozilla.org/addons/2016/06/01/add-ons-update-82/">Add-ons Update – Week of 2016/06/01  Mozilla Add-ons Blog</a></p>
+</blockquote>
+
+<p>I think new Vimperator will be released in Firefox’s Add-ons page soon,
+but we should be careful about these releases.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

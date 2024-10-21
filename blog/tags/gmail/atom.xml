@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Gmail | rcmdnk's blog]]></title>
+  <link href="https://rcmdnk.com/en/blog/tags/gmail/atom.xml" rel="self"/>
+  <link href="https://rcmdnk.com/en/"/>
+  <updated>2024-10-21T00:07:30+00:00</updated>
+  <id>https://rcmdnk.com/en/</id>
+  <author>
+    <name><![CDATA[rcmdnk]]></name>
+    <email><![CDATA[rcmdnk@gmail.com]]></email>
+  </author>
+  <generator uri="https://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to add non-Gmail address to Gmail with Gmail's SMTP server]]></title>
+    <link href="https://rcmdnk.com/en/blog/2016/05/15/computer-gmail/"/>
+    <updated>2016-05-15T00:00:00+00:00</updated>
+    <id>https://rcmdnk.com/en/blog/2016/05/15/computer-gmail</id>
+    <content type="html"><![CDATA[<p>I’m managing all e-mail addresses in Gmail.</p>
+
+<p>All emails are forwarded to my Gmail account
+and I send mails by Gmail for these addresses.</p>
+
+<p>Previously, I used Thunderbird and no forwarding was used.
+But Gmail’s web interface has become so useful,
+and it is much easier to use it as I can use it with full my settings (especially filters)
+if only I have a browser.</p>
+
+<p>To add addresses, previously, SMTP server setting was easily by using Gmail’s SMTP server,
+but recently it was changed a bit.</p>
+
+<!-- more -->
+
+<ul id="markdown-toc">
+  <li><a href="#how-to-add-a-mail-address-to-gmail" id="markdown-toc-how-to-add-a-mail-address-to-gmail">How to add a mail address to Gmail</a>    <ul>
+      <li><a href="#forward-a-mail" id="markdown-toc-forward-a-mail">Forward a mail</a></li>
+      <li><a href="#enable-to-choose-the-address-as-a-sender" id="markdown-toc-enable-to-choose-the-address-as-a-sender">Enable to choose the address as a sender</a></li>
+      <li><a href="#set-smtp-server-manually" id="markdown-toc-set-smtp-server-manually">Set SMTP server manually</a></li>
+    </ul>
+  </li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ul>
+<div class="group"></div>
+
+<div class="center_wrapper">
+  <div>Sponsored Links</div>
+  <div>
+  <ins class="adsbygoogle google-img-rect" style="display:inline-block" data-ad-client="ca-pub-3802317723662375" data-ad-slot="4042912847"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+<h1 id="how-to-add-a-mail-address-to-gmail">How to add a mail address to Gmail</h1>
+
+<p>To add a mail address to Gmail, you need to:</p>
+
+<ul>
+  <li>forward the mail from your mail server to Gmail.</li>
+  <li>add the mail address to Gmail, and enable to choose the address as a sender.</li>
+</ul>
+
+<h2 id="forward-a-mail">Forward a mail</h2>
+
+<p>This should be done in each address’ server side.</p>
+
+<p>Normally mail services, such Yahoo mail, have a setting of mail forwarding.
+Gmail itself has a forwarding function (<strong>Settings</strong><i class="fa fa-arrow-right"></i><strong>Forwarding and POP/IMAP</strong>,
+and <strong>Add a forwarding address</strong> in <strong>Forwarding</strong>), therefore
+you can manage all Gmail accounts in one account easily.</p>
+
+<h2 id="enable-to-choose-the-address-as-a-sender">Enable to choose the address as a sender</h2>
+
+<p>If you just want to read mails, above forward setting is enough.</p>
+
+<p>If you want to send a mail as other address,
+you need to add the address to Gmail.</p>
+
+<p>To do this, go <strong>Settings</strong><i class="fa fa-arrow-right"></i><strong>Account and Import</strong>:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160515_address.jpg" alt="20160515_address.jpg" class="pic" /></p>
+
+<p>and push <strong>Add another email address that you own</strong>.</p>
+
+<p>Then you will see following screen:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160515_addressinfo.jpg" alt="20160515_addressinfo.jpg" class="pic" /></p>
+
+<p>Here, though <strong>Treat as an alias.</strong> is very confusable,
+normally I choose not to check it.</p>
+
+<p>If you check it, when you send a mail as outer mail address,
+the mail will be remain as unread in your inbox.</p>
+
+<p>It seems like to distinguish the address when you set <strong>Treat as an alias.</strong>.
+So it seems inverse for me…</p>
+
+<blockquote>
+  <p><a href="https://support.google.com/a/answer/1710338?hl=en">Use the ‘Treat as an alias’ setting to manage ‘Send mail as’ account behavior - Google Apps Administrator Help</a></p>
+</blockquote>
+
+<p>Anyway, about <strong>Specify a different “reply-to” address</strong>,
+normally it is not needed but set if you want to reply as different address.</p>
+
+<p>Then, go <strong>Next Step</strong> and will see following screen<sup id="fninref:1"><a href="#fnin:1" rel="footnote">1</a></sup>:</p>
+
+<p><img src="https://rcmdnk.com/en/images/post/20160515_smtp.jpg" alt="20160515_smtp.jpg" class="pic" /></p>
+
+<p>In the past, there was an option like <strong>Send through Gmail (easier to set up)</strong>
+in addition to
+<strong>Send email through your SMTP server</strong>.</p>
+
+<p>But the option seems removed around summer 2014.</p>
+
+<p>At first glance, it seems not possible to use Gmail’s SMTP
+and need each SMTP server of each address…</p>
+
+<h2 id="set-smtp-server-manually">Set SMTP server manually</h2>
+
+<p>But you can use Gmail’s SMTP server by setting it manually.</p>
+
+<p>In above screen, put following information:</p>
+
+<ul>
+  <li>SMTP Server: smtp.gmail.com</li>
+  <li>Port: 587 (or 465)</li>
+  <li>Username: Your Gmail user name</li>
+  <li>Password: Your Gmail password (If you are using <a href="https://www.google.co.jp/intl/en/landing/2step/">2-Step Verification</a>,
+issue a password for app from <a href="https://myaccount.google.com/">My Account</a>.)</li>
+  <li>TLS or SSL: TLS for 587, SSL for 465</li>
+</ul>
+
+<p>Note: If you have not set 2-Step Verification,
+you need to allow accesses from less secure apps in
+<a href="https://www.google.com/settings/security/lesssecureapps">Less secure apps - Account settings</a>.
+(Or you can <a href="https://support.google.com/accounts/answer/185839">turn on 2-Step Verification</a>
+in this opportunity.)</p>
+
+<p>Of course, you can set different SMTP server for each address,
+and it is sometime better
+because some mail filters reject if a domain of the address and
+SMTP server’s domain is different.
+(Though it becomes less compared to the past.)</p>
+
+<p>But it is easy to use Gmail’s SMTP server
+especially when you don’t have SMTP server for corresponding address.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>It is very useful to manage all emails in one Gmail account,
+because you just need a browser to see all of them and use functions with full settings (filters).</p>
+
+<p>There is no <strong>easier to set up</strong> option to set SMTP server,
+but you can still use Gmail’s SMTP server
+if you set it manually.
+So, you can add even addresses for which you do not have SMTP server.</p>
+]]></content>
+  </entry>
+  
+</feed>
